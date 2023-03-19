@@ -86,9 +86,17 @@ string exacttime()
 
     return Time;
 
-    
-
 }
+
+class Court
+{
+    private:
+        string namemale;
+        string namefemale;
+        int n_marriagepaper;
+        string CNIC_male;
+        string CNIC_female;
+};
 
 class Hospital
 {
@@ -103,10 +111,19 @@ class Hospital
         char gender;
 
     public:
-        Hospital()
+        Hospital(string name, string fathername, string mothername, char gender)
         {
+            this->name = name;
+
+            this->fathername = fathername;
+
+            this->mothername = mothername;
+
+            this->gender = gender;
+
             birthdate = exacttime();
         }
+
         void setname(string name)
         {
             this->name = name;
@@ -152,13 +169,12 @@ class Nadra
         string deathtime;
         string religion;
         string relationshipstatus;
+        string educationstatus;
         char gender;     
         int marriagepaper; 
         int age;
 
     public:
-        string today_date;
-
 
 };
 
