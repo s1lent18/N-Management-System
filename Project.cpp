@@ -93,9 +93,24 @@ class Court
     private:
         string namemale;
         string namefemale;
-        int n_marriagepaper;
         string CNIC_male;
         string CNIC_female;
+        int n_marriagepaper;
+
+    public:
+        Court(string namemale, string namefemale, string CNIC_male, string CNIC_female)
+        {
+            this->namemale = namemale;
+            this->namefemale = namefemale;
+            this->CNIC_male = CNIC_male;
+            this->CNIC_female = CNIC_female;
+
+        }
+
+        void verification()
+        {
+
+        }
 };
 
 class Hospital
@@ -109,6 +124,7 @@ class Hospital
         string deathtime;
         string deathdate;
         char gender;
+        int age;
 
     public:
         Hospital(string name, string fathername, string mothername, char gender)
@@ -121,12 +137,34 @@ class Hospital
 
             this->gender = gender;
 
-            birthdate = exacttime();
+            setbirthdate();
+
+            setbirthtime();
         }
 
         void setname(string name)
         {
             this->name = name;
+        }
+
+        string getname()
+        {
+            return name;
+        }
+
+        string getfathername()
+        {
+            return fathername;
+        }
+
+        string getmothername()
+        {
+            return mothername;
+        }
+
+        char getgender()
+        {
+            return gender;
         }
 
         void setfathername(string fathername)
@@ -144,9 +182,44 @@ class Hospital
             this->gender = gender;
         }
 
+        void setbirthdate()
+        {
+            birthdate = exacttime();
+        }
+
+        void setbirthtime()
+        {
+
+        }
+
         string getbirthdate()
         {
             return birthdate;
+        }
+
+        string getbirthtime()
+        {
+            return birhttime;
+        }
+
+        void setdeathdate()
+        {
+
+        }
+
+        void setdeathtime()
+        {
+
+        }
+
+        string getdeathdate()
+        {
+            return deathdate;
+        }
+
+        string getdeathtime()
+        {
+            return deathtime;
         }
 
 
@@ -177,10 +250,3 @@ class Nadra
     public:
 
 };
-
-int main()
-{
-    Hospital H;
-
-    cout<<H.getbirthdate();
-}
