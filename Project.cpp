@@ -6,83 +6,102 @@ using namespace std;
 
 string exactdate()
 {
-    string Time, temp;
+    string date, temp;
 
+    time_t c_date = time(0);
+
+    char * DATE = ctime(&c_date);
+
+    date = date + DATE[8];
+
+    date = date + DATE[9];
+
+    temp = temp + DATE[4];
+
+    temp = temp + DATE[5];
+
+    temp = temp + DATE[6];
+
+    if (temp == "Jan")
+    {
+        date = date + "01";
+
+    }else if (temp == "Feb")
+    {
+        date = date + "02";
+
+    }else if (temp == "Feb")
+    {
+        date = date + "02";
+        
+    }else if (temp == "Mar")
+    {
+        date = date + "03";
+        
+    }else if (temp == "Apr")
+    {
+        date = date + "05";
+        
+    }else if (temp == "Jun")
+    {
+        date = date + "06";
+        
+    }else if (temp == "Jul")
+    {
+        date = date + "07";
+        
+    }else if (temp == "Aug")
+    {
+        date = date + "08";
+        
+    }else if (temp == "Sep")
+    {
+        date = date + "09";
+        
+    }else if (temp == "Oct")
+    {
+        date = date + "10";
+        
+    }else if (temp == "Nov")
+    {
+        date = date + "11";
+        
+    }else if (temp == "Dec")
+    {
+        date = date + "12";
+        
+    }
+
+    date = date + DATE[20];
+
+    date = date + DATE[21];
+
+    date = date + DATE[22];
+
+    date = date + DATE[23];
+
+    return date;
+}
+
+string exacttime()
+{
+    string Time, temp;
+    
     time_t c_time = time(0);
 
     char * TIME = ctime(&c_time);
 
-    Time = Time + TIME[8];
+    Time = Time + TIME[11];    
 
-    Time = Time + TIME[9];
+    Time = Time + TIME[12];
 
-    temp = temp + TIME[4];
+    Time = Time + TIME[14];
 
-    temp = temp + TIME[5];
+    Time = Time + TIME[15];
 
-    temp = temp + TIME[6];
+    Time = Time + TIME[17];
 
-    Time = Time + " ";
-
-    if (temp == "Jan")
-    {
-        Time = Time + "01";
-
-    }else if (temp == "Feb")
-    {
-        Time = Time + "02";
-
-    }else if (temp == "Feb")
-    {
-        Time = Time + "02";
-        
-    }else if (temp == "Mar")
-    {
-        Time = Time + "03";
-        
-    }else if (temp == "Apr")
-    {
-        Time = Time + "05";
-        
-    }else if (temp == "Jun")
-    {
-        Time = Time + "06";
-        
-    }else if (temp == "Jul")
-    {
-        Time = Time + "07";
-        
-    }else if (temp == "Aug")
-    {
-        Time = Time + "08";
-        
-    }else if (temp == "Sep")
-    {
-        Time = Time + "09";
-        
-    }else if (temp == "Oct")
-    {
-        Time = Time + "10";
-        
-    }else if (temp == "Nov")
-    {
-        Time = Time + "11";
-        
-    }else if (temp == "Dec")
-    {
-        Time = Time + "12";
-        
-    }
-
-    Time = Time + " ";
-
-    Time = Time + TIME[20];
-
-    Time = Time + TIME[21];
-
-    Time = Time + TIME[22];
-
-    Time = Time + TIME[23];
+    Time = Time + TIME[18];
 
     return Time;
 
@@ -189,7 +208,7 @@ class Hospital
 
         void setbirthtime()
         {
-
+            birthtime = exacttime();
         }
 
         string getbirthdate()
@@ -199,7 +218,7 @@ class Hospital
 
         string getbirthtime()
         {
-            return birhttime;
+            return birthtime;
         }
 
         void setdeathdate()
