@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 
-string exacttime()
+string exactdate()
 {
     string Time, temp;
 
@@ -184,7 +184,7 @@ class Hospital
 
         void setbirthdate()
         {
-            birthdate = exacttime();
+            birthdate = exactdate();
         }
 
         void setbirthtime()
