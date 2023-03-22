@@ -262,10 +262,102 @@ class Nadra
         string religion;
         string relationshipstatus;
         string educationstatus;
+        string country;
         char gender;     
         int marriagepaper; 
         int age;
 
     public:
 
+        void setname(string name)
+        {
+            this->name = name;
+        }
+
+        string getname()
+        {
+            return name;
+        }
+
+        void setfathername(string fathername)
+        {
+            this->fathername = fathername;
+        }
+
+        string getfathername()
+        {
+            return fathername;
+        }
+
+        void setmothername(string mothername)
+        {
+            this->mothername = mothername;
+        }
+
+        string getmothername()
+        {
+            return mothername;
+        }
+
+        void setf_grandfather(string f_grandfather)
+        {
+            this->f_grandfather = f_grandfather;
+        }
+
+        string getf_grandfather()
+        {
+            return f_grandfather;
+        }
+
+        void setf_grandmother(string f_grandmother)
+        {
+            this->f_grandmother = f_grandmother;
+        }
+
+        string getf_grandmother()
+        {
+            return f_grandmother;
+        }
+
+        void setm_grandfather(string m_grandfather)
+        {
+            this->m_grandfather = m_grandfather;
+        }
+
+        string getm_grandfather()
+        {
+            return m_grandfather;
+        }
+
+        void setm_grandmother(string m_grandmother)
+        {
+            this->m_grandmother = m_grandmother;
+        }
+
+        string getm_grandmother()
+        {
+            return m_grandmother;
+        }
+
+        void setCNIC()
+        {
+            
+        }
+
+        string getCNIC()
+        {
+            return CNIC;
+        }
+
+        void setmarriagepaper(int marriagepaper)
+        {
+            this->marriagepaper = marriagepaper;
+        }
+
+        int getmarriagepaper()
+        {
+            return marriagepaper;
+        }
+
 };
+
