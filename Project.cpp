@@ -2,6 +2,7 @@
 #include <cmath>
 #include <string>
 #include <ctime>
+#include <cstdlib>
 using namespace std;
 
 string Sindh[51] = {"Hyderabad", "Dadu", "Karachi", "Jacobabad", "Larkana", "Khairpur", "Ghotki", "MirpurKhas", "Sanghar", "Sukkur", "Kashmore", "Shikarpur", "Tando-Allahyar", "Tando-MuhammadKhan", "Nawabshah", "Umarkot", "ShahdadKot", "Badin", "Jamshoro", "Kotri", "Thatta", "Shahdadpur", "Naushahro Feroze", "RCW Rohri", "Rato Dero", "Sakrand", "Moro", "Tando Adam", "Mehrabpur", "Mirpur Mathelo", "Daharki", "Sehwan", "Gambat", "Thul", "Mithi", "Khipro", "Shahpur Chakar", "Digri", "Kandiaro", "Dokri", "Ranipur", "Hala", "Islamkot", "Sobho Dero", "Keti", "Pirjo Goth", "Sinjhoro", "Madeji", "Kunri", "Malir Contonment", "Nagarparkar"};
@@ -30,7 +31,7 @@ string exactdate()
 
     temp = temp + DATE[5];
 
-    temp = temp + DATE[6];/
+    temp = temp + DATE[6];
 
     if (temp == "Jan")
     {
@@ -136,8 +137,12 @@ class Court
 
         }
 
-        void verification()
+        long long int generate_number()
         {
+            long long int lower_number = 10000000;
+            long long int upper_number = 9999999999999999;
+
+            return ((rand() % (upper_number - lower_number + 1)) + lower_number);
 
         }
 };
@@ -233,12 +238,12 @@ class Hospital
 
         void setdeathdate()
         {
-
+            deathdate = exactdate();
         }
 
         void setdeathtime()
         {
-
+            deathtime = exacttime();
         }
 
         string getdeathdate()
@@ -273,15 +278,37 @@ class Nadra : public Court, public Hospital
         string relationshipstatus;
         string educationstatus;
         string country;
+        string dateofissue;
+        string dateofexpiry;
         char gender;     
-        int marriagepaper; 
         int age;
+        long long int marriagepaper; 
         static int population;
+        string today_date;
     public:
 
+        Nadra(string name, string fathername, string mothername, int age, string birthdate, string birthtime, string religion, char gender, string country, string city)
+        {
+            this->name = name;
+        }
         void setname(string name)
         {
             this->name = name;
+        }
+
+        void setdateofissue(string m)
+        {
+            dateofissue = m;
+        }
+
+        string getdateofissue()
+        {
+            return dateofissue;
+        }
+
+        void setdateofissue()
+        {
+
         }
 
         string getname()
@@ -359,16 +386,28 @@ class Nadra : public Court, public Hospital
             return CNIC;
         }
 
-        void setmarriagepaper(int marriagepaper)
+        void setmarriagepaper(long long int marriagepaper)
         {
             this->marriagepaper = marriagepaper;
         }
 
-        int getmarriagepaper()
+        long long int getmarriagepaper()
         {
             return marriagepaper;
+        }
+
+        void setdateofexpiry(string a)
+        {
+            dateofexpiry = getbirthdate
         }
 
 };
 
 int Nadra :: population = 0;
+
+int main()
+{
+    Hospital q("John", "Steve", "Sarah", 'M');
+
+    
+}
