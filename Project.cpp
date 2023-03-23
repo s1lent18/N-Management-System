@@ -128,6 +128,11 @@ class Court
         int n_marriagepaper;
 
     public:
+        Court()
+        {
+
+        };
+
         Court(string namemale, string namefemale, string CNIC_male, string CNIC_female)
         {
             this->namemale = namemale;
@@ -161,6 +166,11 @@ class Hospital
         int age;
 
     public:
+        Hospital()
+        {
+
+        };
+
         Hospital(string name, string fathername, string mothername, char gender)
         {
             this->name = name;
@@ -280,25 +290,34 @@ class Nadra : public Court, public Hospital
         string country;
         string dateofissue;
         string dateofexpiry;
+        string spouse;
+
         char gender;     
         int age;
         long long int marriagepaper; 
         static int population;
-        string today_date;
+        
     public:
 
-        Nadra(string name, string fathername, string mothername, int age, string birthdate, string birthtime, string religion, char gender, string country, string city)
+        Nadra(string name, string fathername, string mothername, string birthdate, string birthtime, string religion, char gender, string country, string city)
         {
             this->name = name;
+            this->fathername = fathername;
+            this->mothername = mothername;
+            age = 0;
+            this->birthdate = birthdate;
+            this->birthtime = birthtime;
+
+            setdateofissue();
         }
         void setname(string name)
         {
             this->name = name;
         }
 
-        void setdateofissue(string m)
+        void setdateofissue()
         {
-            dateofissue = m;
+            dateofissue = exactdate();
         }
 
         string getdateofissue()
@@ -306,9 +325,19 @@ class Nadra : public Court, public Hospital
             return dateofissue;
         }
 
-        void setdateofissue()
+        void setdateofexpiry()
         {
+            int num;
+            num = stoi(getdateofissue());
+            num = num + 5;
 
+            dateofexpiry = to_string(num);
+
+        }
+
+        string getdateofexpiry()
+        {
+            return dateofexpiry;
         }
 
         string getname()
@@ -398,7 +427,7 @@ class Nadra : public Court, public Hospital
 
         void setdateofexpiry(string a)
         {
-            dateofexpiry = getbirthdate
+            dateofexpiry = exactdate();
         }
 
 };
