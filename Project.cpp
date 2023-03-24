@@ -126,7 +126,8 @@ class Court
         string CNIC_male;
         string CNIC_female;
         int n_marriagepaper;
-
+        static int Marriagecount;
+        static int Divorcecount;
     public:
         Court()
         {
@@ -142,12 +143,14 @@ class Court
 
         }
 
-        long long int generate_number()
+        int getn_marriagepaper()
         {
-            long long int lower_number = 10000000;
-            long long int upper_number = 9999999999999999;
+            int lower_number = 0;
+            int upper_number = 10000000;
 
             return ((rand() % (upper_number - lower_number + 1)) + lower_number);
+
+            Marriagecount++;
 
         }
 };
@@ -162,6 +165,9 @@ class Hospital
         string birthtime;
         string deathtime;
         string deathdate;
+        string locationofhospital;
+        string CNIC_father;
+        string CNIC_mother;
         char gender;
         int age;
 
@@ -171,7 +177,7 @@ class Hospital
 
         };
 
-        Hospital(string name, string fathername, string mothername, char gender)
+        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, char gender)
         {
             this->name = name;
 
@@ -181,6 +187,10 @@ class Hospital
 
             this->gender = gender;
 
+            this->CNIC_father = CNIC_father;
+
+            this->CNIC_mother = CNIC_mother;
+
             setbirthdate();
 
             setbirthtime();
@@ -189,6 +199,26 @@ class Hospital
         void setname(string name)
         {
             this->name = name;
+        }
+
+        void setCNIC_father(string CNIC_father)
+        {
+            this->CNIC_father = CNIC_father;
+        }
+
+        string getCNIC_father()
+        {
+            return CNIC_father;
+        }
+
+        void setCNIC_mother(string CNIC_mother)
+        {
+            this->CNIC_mother = CNIC_mother;
+        }
+
+        string getCNIC_mother()
+        {
+            return CNIC_mother;
         }
 
         string getname()
@@ -266,6 +296,17 @@ class Hospital
             return deathtime;
         }
 
+        void dischargeforbirth()
+        {
+            cout<<"Welcome to Discharge Page"<<endl;
+            cout<<"The Name of the new born baby is "<<getname()<<endl;
+            cout<<"The Father's name is "<<getfathername()<<endl;
+            cout<<"The mother's name is "<<getmothername()<<endl;
+            cout<<"CNIC number of father is "<<getCNIC_father()<<endl;
+            cout<<"CNIC number of mother is "<<getCNIC_mother()<<endl;
+
+        }
+
 
 };
 
@@ -291,6 +332,7 @@ class Nadra : public Court, public Hospital
         string dateofissue;
         string dateofexpiry;
         string spouse;
+        string Citizenship_status;
 
         char gender;     
         int age;
@@ -304,9 +346,9 @@ class Nadra : public Court, public Hospital
             this->name = name;
             this->fathername = fathername;
             this->mothername = mothername;
-            age = 0;
             this->birthdate = birthdate;
             this->birthtime = birthtime;
+            age = 0;
 
             setdateofissue();
         }
@@ -436,7 +478,9 @@ int Nadra :: population = 0;
 
 int main()
 {
-    Hospital q("John", "Steve", "Sarah", 'M');
+    int choice = 0;
+
+    cout<<"Enter 1 For Court\nEnter 2 For Hospital\nEnter 3 For Nadra"<<endl;
 
     
 }
