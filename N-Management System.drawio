@@ -1,0 +1,62 @@
+<mxfile host="app.diagrams.net" modified="2023-03-25T07:26:21.368Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/111.0" etag="P-ew33Jffoua_vhcGk7v" version="21.1.1" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1062" dy="483" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="76ZYkbSYI2YksYncArjY-44" value="Nadra" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="160" y="720" width="800" height="760" as="geometry">
+            <mxRectangle x="160" y="720" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-45" value="&lt;div&gt;- name:string&lt;/div&gt;&lt;div&gt;- fathername:string&lt;/div&gt;&lt;div&gt;- mothername:string &lt;br&gt;&lt;/div&gt;&lt;div&gt;- f_grandfather:string&lt;/div&gt;&lt;div&gt;- f_grandmother:string&lt;/div&gt;&lt;div&gt;- m_grandfather:string&lt;/div&gt;&lt;div&gt;- m_grandmother:string&lt;/div&gt;&lt;div&gt;- CNIC:string&lt;/div&gt;&lt;div&gt;- birthdate:string&lt;/div&gt;&lt;div&gt;- birthtime:string&lt;/div&gt;&lt;div&gt;- deathdate:string&lt;/div&gt;&lt;div&gt;- deathtime:string&lt;/div&gt;&lt;div&gt;- religion:string&lt;/div&gt;&lt;div&gt;- relationshipstatus:string&lt;/div&gt;&lt;div&gt;- educationstatus:string&lt;/div&gt;&lt;div&gt;- country:string&lt;/div&gt;&lt;div&gt;- dateofissue:string&lt;/div&gt;&lt;div&gt;- dateofexpiry:string&lt;/div&gt;&lt;div&gt;- spouse:string&lt;/div&gt;&lt;div&gt;- Citizenship_status:string&lt;br&gt;&lt;/div&gt;&lt;div&gt;- gender:char&lt;/div&gt;&lt;div&gt;- age:int&lt;/div&gt;&lt;div&gt;- marriagepaper:int&lt;/div&gt;&lt;div&gt;- population:int&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-44" vertex="1">
+          <mxGeometry y="26" width="800" height="364" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-46" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="76ZYkbSYI2YksYncArjY-44" vertex="1">
+          <mxGeometry y="390" width="800" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-47" value="&lt;div&gt;+ Nadra(string, string, string, string, string, string, string, string, char)&lt;/div&gt;&lt;div&gt;+ setname(string):void&lt;/div&gt;&lt;div&gt;+ getname():string&lt;/div&gt;&lt;div&gt;+ setfathername(string):void&lt;/div&gt;&lt;div&gt;+ getfathername():string&lt;/div&gt;&lt;div&gt;+ setmothername(string):void&lt;/div&gt;&lt;div&gt;+ getmothername():string&lt;/div&gt;&lt;div&gt;+ setf_grandfather(string):void&lt;/div&gt;&lt;div&gt;+ setf_grandmother(string):void&lt;/div&gt;&lt;div&gt;+ setm_grandfather(string):void&lt;/div&gt;&lt;div&gt;+ setm_grandmother(string):void&lt;/div&gt;&lt;div&gt;+ getf_grandfather():string&lt;/div&gt;&lt;div&gt;+ getf_grandmother():string&lt;/div&gt;&lt;div&gt;+ getm_grandfather():string&lt;/div&gt;&lt;div&gt;+ getm_grandmother():string&lt;/div&gt;&lt;div&gt;+ setdateofissue():void&lt;/div&gt;&lt;div&gt;+ getdateofissue():string&lt;/div&gt;&lt;div&gt;+ setdateofexpiry():void&lt;/div&gt;&lt;div&gt;+ getdateofexpiry():string&lt;/div&gt;&lt;div&gt;+ setCNIC():void&lt;/div&gt;&lt;div&gt;+ getCNIC():string&lt;/div&gt;&lt;div&gt;+ setmarriagepaper(int):void&lt;/div&gt;&lt;div&gt;+ getmarriagepaper():int&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-44" vertex="1">
+          <mxGeometry y="398" width="800" height="362" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="76ZYkbSYI2YksYncArjY-58" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="339" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-58" value="Court" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="160" y="40" width="360" height="230" as="geometry">
+            <mxRectangle x="160" y="40" width="70" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-59" value="&lt;div&gt;- namemale:string&lt;/div&gt;&lt;div&gt;- namefemale:string&lt;/div&gt;&lt;div&gt;- CNIC_male:string&lt;/div&gt;&lt;div&gt;- CNIC_female:string&lt;br&gt;&lt;/div&gt;&lt;div&gt;- n_marriagepaper:int&lt;/div&gt;&lt;div&gt;- Marriagecount:int&lt;/div&gt;&lt;div&gt;- Divorcecount:int&lt;/div&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;style class=&quot;native-dark-class-modified&quot; type=&quot;text/css&quot;&gt;p { line-height: 115%; margin-bottom: 0.1in; background: transparent }&lt;/style&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-58" vertex="1">
+          <mxGeometry y="26" width="360" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-60" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="76ZYkbSYI2YksYncArjY-58" vertex="1">
+          <mxGeometry y="140" width="360" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-61" value="&lt;div&gt;+ Court()&lt;/div&gt;&lt;div&gt;+Court(string,string, string, string)&lt;/div&gt;&lt;div&gt;+setn_marriagepaper():int&lt;/div&gt;&lt;div&gt;+getn_marriagepaper():int&lt;/div&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;style class=&quot;native-dark-class-modified&quot; type=&quot;text/css&quot;&gt;p { line-height: 115%; margin-bottom: 0.1in; background: transparent }&lt;/style&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-58" vertex="1">
+          <mxGeometry y="148" width="360" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="76ZYkbSYI2YksYncArjY-67" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="780" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-67" value="Hospital" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="600" y="40" width="360" height="570" as="geometry">
+            <mxRectangle x="600" y="40" width="90" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-68" value="&lt;div&gt;- name:string&lt;/div&gt;&lt;div&gt;- fathername:string&lt;/div&gt;&lt;div&gt;- mothername:string&lt;/div&gt;&lt;div&gt;- birthdate:string&lt;/div&gt;&lt;div&gt;- birthtime:string&lt;/div&gt;&lt;div&gt;- deathdate:string&lt;/div&gt;&lt;div&gt;- deathtime:string&lt;/div&gt;&lt;div&gt;-locationofhospital:string&lt;/div&gt;&lt;div&gt;- CNIC_father:string&lt;/div&gt;&lt;div&gt;- CNIC_mother:string&lt;/div&gt;&lt;div&gt;- gender:char&lt;/div&gt;- age:int&lt;br&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;style class=&quot;native-dark-class-modified&quot; type=&quot;text/css&quot;&gt;p { line-height: 115%; margin-bottom: 0.1in; background: transparent }&lt;/style&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-67" vertex="1">
+          <mxGeometry y="26" width="360" height="184" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-69" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="76ZYkbSYI2YksYncArjY-67" vertex="1">
+          <mxGeometry y="210" width="360" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="76ZYkbSYI2YksYncArjY-70" value="+ Hospital()&lt;br&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;+ Hospital(string ,string, string, string, string, char)&lt;/p&gt;&lt;div&gt;+setname(string):void&lt;/div&gt;&lt;div&gt;+ getname():string&lt;/div&gt;&lt;div&gt;+setCNIC_father(string):void&lt;/div&gt;&lt;div&gt;+setCNIC_mother(string):void&lt;/div&gt;&lt;div&gt;+getCNIC_father():string&lt;/div&gt;&lt;div&gt;+getCNIC_mother():string&lt;/div&gt;&lt;div&gt;+setfathername(string):void&lt;/div&gt;&lt;div&gt;+setmothername(string):void&lt;/div&gt;&lt;div&gt;+getfathername():string&lt;/div&gt;&lt;div&gt;+getmothername():string&lt;/div&gt;&lt;div&gt;+setgender(char):void&lt;/div&gt;&lt;div&gt;+ getgender():char&lt;/div&gt;&lt;div&gt;+setbirthdate():void&lt;/div&gt;&lt;div&gt;+setbirthtime():void&lt;/div&gt;&lt;div&gt;+setdeathdate():void&lt;/div&gt;&lt;div&gt;+setdeathtime():void&lt;/div&gt;&lt;div&gt;+getbirthdate():string&lt;/div&gt;&lt;div&gt;+getbirthtime():string&lt;/div&gt;&lt;div&gt;+getdeathdate():string&lt;/div&gt;&lt;div&gt;+getdeathtime():string&lt;/div&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;style class=&quot;native-dark-class-modified&quot; type=&quot;text/css&quot;&gt;p { line-height: 115%; margin-bottom: 0.1in; background: transparent }&lt;/style&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-67" vertex="1">
+          <mxGeometry y="218" width="360" height="352" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
