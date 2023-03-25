@@ -163,6 +163,10 @@ class Court
 				}
 				check++;
 		}
+		int getn_marriagepaper()
+		{
+			return n_marriagepaper;
+		}
 };
 
 class Hospital
