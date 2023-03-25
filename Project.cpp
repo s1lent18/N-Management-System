@@ -165,19 +165,20 @@ class Hospital
         string birthtime;
         string deathtime;
         string deathdate;
-        string locationofhospital;
         string CNIC_father;
         string CNIC_mother;
         char gender;
         int age;
 
     public:
+        string locationofhospital;
+        
         Hospital()
         {
 
         };
 
-        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, char gender)
+        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, char gender, string locationofhospital)
         {
             this->name = name;
 
@@ -190,6 +191,8 @@ class Hospital
             this->CNIC_father = CNIC_father;
 
             this->CNIC_mother = CNIC_mother;
+
+            this->locationofhospital = locationofhospital;
 
             setbirthdate();
 
@@ -329,14 +332,14 @@ class Nadra : public Court, public Hospital
         string relationshipstatus;
         string educationstatus;
         string country;
+        string province;
         string dateofissue;
         string dateofexpiry;
         string spouse;
         string Citizenship_status;
-
         char gender;     
         int age;
-        long long int marriagepaper; 
+        int marriagepaper; 
         static int population;
         
     public:
@@ -352,6 +355,7 @@ class Nadra : public Court, public Hospital
 
             setdateofissue();
         }
+
         void setname(string name)
         {
             this->name = name;
@@ -370,7 +374,9 @@ class Nadra : public Court, public Hospital
         void setdateofexpiry()
         {
             int num;
+
             num = stoi(getdateofissue());
+
             num = num + 5;
 
             dateofexpiry = to_string(num);
@@ -427,6 +433,49 @@ class Nadra : public Court, public Hospital
             return f_grandmother;
         }
 
+        void setprovince()
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                if (Sindh[i] == locationofhospital)
+                {
+                    province = "Sindh";
+
+                    break;
+
+                }else if (Balochistan[i] == locationofhospital)
+                {
+                    province = "Balochistan";
+
+                    break;
+
+                }else if (Punjab[i] == locationofhospital)
+                {
+                    province = "Punjab";
+
+                    break;
+
+                }else if (KPK[i] == locationofhospital)
+                {
+                    province = "KPK";
+
+                    break;
+
+                }else if (Capital == locationofhospital)
+                {
+                    province = "Capital";
+
+                    break;
+                }
+            }
+                   
+        }
+
+        string getprovince()
+        {
+            return province;
+        }
+
         void setm_grandfather(string m_grandfather)
         {
             this->m_grandfather = m_grandfather;
@@ -449,7 +498,11 @@ class Nadra : public Court, public Hospital
 
         void setCNIC()
         {
-            
+            CNIC = CNIC + country[0];
+
+            CNIC = CNIC + province[0];
+
+            CNIC = CNIC + locationofhospital[0];           
         }
 
         string getCNIC()
