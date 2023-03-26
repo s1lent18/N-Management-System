@@ -126,10 +126,10 @@ class Court
         string CNIC_male;
         string CNIC_female;
         int n_marriagepaper;
+        int marriagepaper[100];
         static int Marriagecount;
         static int Divorcecount;
-        int marriagepaper[100];
-        int check=0;
+        int check = 0;
     public:
         Court()
         {
@@ -151,22 +151,29 @@ class Court
             int upper_number = 10000000;
 			
 			srand(time(0));
+
 			regenerate:
-            n_marriagepaper=((rand() % (upper_number - lower_number + 1)) + lower_number);
-			marriagepaper[check]=n_marriagepaper;
-			for(int i=0;i<100;i++){
-				for(int j=i+1;j<100;j++){
-					if(marriagepaper[i]==marriagepaper[j]){
-						goto regenerate;
-					}
+                n_marriagepaper=((rand() % (upper_number - lower_number + 1)) + lower_number);
+			
+                marriagepaper[check]=n_marriagepaper;
+
+			    for(int i = 0;i < 100; i++)
+                {
+				    for(int j=i+1;j<100;j++)
+                    {
+					    if(marriagepaper[i] == marriagepaper[j])
+                        {
+						    goto regenerate;
+					    }
 					}
 				}
 				check++;
 		}
-		int getn_marriagepaper()
-		{
-			return n_marriagepaper;
-		}
+
+        int getn_marriagepaper()
+        {
+            return n_marriagepaper;
+        }
 };
 
 class Hospital
@@ -351,14 +358,14 @@ class Nadra : public Court, public Hospital
         string dateofexpiry;
         string spouse;
         string Citizenship_status;
+        string employment_status;
         char gender;     
         int age;
         int marriagepaper; 
         static int population;
         static int overeighteen;
         static int undereighteen;
-        string employment_status;
-        
+
     public:
 
         Nadra(string name, string fathername, string mothername, string birthdate, string birthtime, string religion, char gender, string country, string city)
@@ -532,7 +539,7 @@ class Nadra : public Court, public Hospital
             this->marriagepaper = marriagepaper;
         }
 
-        long long int getmarriagepaper()
+        int getmarriagepaper()
         {
             return marriagepaper;
         }
@@ -541,7 +548,7 @@ class Nadra : public Court, public Hospital
         {
             dateofexpiry = exactdate();
         }
-        
+
         void checkeighteen ()
         {
         	cout<<"Percentage of People under 18: "<<(undereighteen/population)*100<<"%"<<endl;
@@ -551,8 +558,8 @@ class Nadra : public Court, public Hospital
 };
 
 int Nadra :: population = 0;
-int Nadra :: overeighteen=0;
-int Nadra :: undereighteen=0;
+int Nadra :: undereighteen = 0;
+int Nadra :: overeighteen = 0;
 
 int main()
 {
