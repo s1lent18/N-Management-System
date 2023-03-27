@@ -159,7 +159,7 @@ class Court
 
 			    for(int i = 0;i < 100; i++)
                 {
-				    for(int j=i+1;j<100;j++)
+				    for(int j= i + 1;j<100;j++)
                     {
 					    if(marriagepaper[i] == marriagepaper[j])
                         {
@@ -188,18 +188,18 @@ class Hospital
         string deathdate;
         string CNIC_father;
         string CNIC_mother;
+        string locationofhospital;
         char gender;
         int age;
 
     public:
-        string locationofhospital;
         
         Hospital()
         {
 
         };
 
-        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, char gender, string locationofhospital)
+        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, string locationofhospital, char gender)
         {
             this->name = name;
 
@@ -223,6 +223,16 @@ class Hospital
         void setname(string name)
         {
             this->name = name;
+        }
+
+        void setlocationofhospital(string locationofhospital)
+        {
+            this->locationofhospital = locationofhospital;
+        }
+
+        string getlocationofhospital()
+        {
+            return locationofhospital;
         }
 
         void setCNIC_father(string CNIC_father)
@@ -353,7 +363,7 @@ class Nadra : public Court, public Hospital
         string relationshipstatus;
         string educationstatus;
         string country;
-        string province;
+        string province = "province";
         string dateofissue;
         string dateofexpiry;
         string spouse;
@@ -367,6 +377,11 @@ class Nadra : public Court, public Hospital
         static int undereighteen;
 
     public:
+
+        Nadra()
+        {
+
+        };
 
         Nadra(string name, string fathername, string mothername, string birthdate, string birthtime, string religion, char gender, string country, string city)
         {
@@ -461,31 +476,31 @@ class Nadra : public Court, public Hospital
         {
             for (int i = 0; i < 60; i++)
             {
-                if (Sindh[i] == locationofhospital)
+                if (Sindh[i] == getlocationofhospital())
                 {
                     province = "Sindh";
 
                     break;
 
-                }else if (Balochistan[i] == locationofhospital)
+                }else if (Balochistan[i] == getlocationofhospital())
                 {
                     province = "Balochistan";
 
                     break;
 
-                }else if (Punjab[i] == locationofhospital)
+                }else if (Punjab[i] == getlocationofhospital())
                 {
                     province = "Punjab";
 
                     break;
 
-                }else if (KPK[i] == locationofhospital)
+                }else if (KPK[i] == getlocationofhospital())
                 {
                     province = "KPK";
 
                     break;
 
-                }else if (Capital == locationofhospital)
+                }else if (Capital == getlocationofhospital())
                 {
                     province = "Capital";
 
@@ -526,7 +541,11 @@ class Nadra : public Court, public Hospital
 
             CNIC = CNIC + province[0];
 
-            CNIC = CNIC + locationofhospital[0];           
+            CNIC = CNIC + getlocationofhospital()[0];
+
+            CNIC = CNIC + "-";
+            
+                       
         }
 
         string getCNIC()
@@ -534,7 +553,7 @@ class Nadra : public Court, public Hospital
             return CNIC;
         }
 
-        void setmarriagepaper(long long int marriagepaper)
+        void setmarriagepaper(int marriagepaper)
         {
             this->marriagepaper = marriagepaper;
         }
@@ -567,5 +586,17 @@ int main()
 
     cout<<"Enter 1 For Court\nEnter 2 For Hospital\nEnter 3 For Nadra"<<endl;
 
-    
+    Hospital H("John", "David", "Sarah", "t", "r", "Multan", 'M');
+
+    Nadra m;
+
+    cout<<H.getlocationofhospital()<<endl;
+
+    //H.setlocationofhospital("Lahore");
+
+    //cout<<H.getlocationofhospital()<<endl;
+
+    m.setprovince();
+
+    cout<<m.getprovince();
 }
