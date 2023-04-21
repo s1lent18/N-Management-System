@@ -472,42 +472,57 @@ class Nadra : public Court, public Hospital
             return f_grandmother;
         }
 
-        void setprovince()
+        void setprovince(Hospital & hospital)
         {
-            for (int i = 0; i < 60; i++)
+
+            for (int i = 0; i < 51; i++)
             {
-                if (Sindh[i] == getlocationofhospital())
+                if ((Sindh[i].compare(hospital.getlocationofhospital())) == 0)
                 {
                     province = "Sindh";
 
-                    break;
+                    goto end;
 
-                }else if (Balochistan[i] == getlocationofhospital())
+                }
+            }
+            for (int j = 0; j < 54; j++)
+            {
+                if ((Balochistan[j].compare(hospital.getlocationofhospital())) == 0)
                 {
                     province = "Balochistan";
 
-                    break;
+                    goto end;
 
-                }else if (Punjab[i] == getlocationofhospital())
+                }
+            }
+            for (int k = 0; k < 58; k++)
+            {
+                if ((Punjab[k].compare(hospital.getlocationofhospital())) == 0)
                 {
                     province = "Punjab";
 
-                    break;
+                    goto end;
 
-                }else if (KPK[i] == getlocationofhospital())
+                }
+            }
+            for (int l = 0; l < 46; l++)
+            {
+                if ((KPK[l].compare(hospital.getlocationofhospital())) == 0)
                 {
                     province = "KPK";
 
-                    break;
+                    goto end;
 
-                }else if (Capital == getlocationofhospital())
-                {
-                    province = "Capital";
-
-                    break;
                 }
             }
-                   
+            if ((Capital.compare(hospital.getlocationofhospital())) == 0)
+            {
+                province = "Capital";
+
+                
+            }
+            end:
+                int waste = 0;
         }
 
         string getprovince()
@@ -586,17 +601,25 @@ int main()
 
     cout<<"Enter 1 For Court\nEnter 2 For Hospital\nEnter 3 For Nadra"<<endl;
 
+    cin>>choice;
+
     Hospital H("John", "David", "Sarah", "t", "r", "Multan", 'M');
 
     Nadra m;
 
     cout<<H.getlocationofhospital()<<endl;
 
-    //H.setlocationofhospital("Lahore");
+    m.setprovince(H);
 
-    //cout<<H.getlocationofhospital()<<endl;
+    cout<<m.getprovince()<<endl;
 
-    m.setprovince();
+    H.setlocationofhospital("Karachi");
 
-    cout<<m.getprovince();
+    cout<<H.getlocationofhospital()<<endl;
+
+    m.setprovince(H);
+
+    cout<<m.getprovince()<<endl;
+
+
 }
