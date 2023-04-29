@@ -3,21 +3,24 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
 using namespace std;
 
-string Sindh[51] = {"Hyderabad", "Dadu", "Karachi", "Jacobabad", "Larkana", "Khairpur", "Ghotki", "MirpurKhas", "Sanghar", "Sukkur", "Kashmore", "Shikarpur", "Tando-Allahyar", "Tando-MuhammadKhan", "Nawabshah", "Umarkot", "ShahdadKot", "Badin", "Jamshoro", "Kotri", "Thatta", "Shahdadpur", "Naushahro Feroze", "RCW Rohri", "Rato Dero", "Sakrand", "Moro", "Tando Adam", "Mehrabpur", "Mirpur Mathelo", "Daharki", "Sehwan", "Gambat", "Thul", "Mithi", "Khipro", "Shahpur Chakar", "Digri", "Kandiaro", "Dokri", "Ranipur", "Hala", "Islamkot", "Sobho Dero", "Keti", "Pirjo Goth", "Sinjhoro", "Madeji", "Kunri", "Malir Contonment", "Nagarparkar"};
+std::string Sindh[51] = {"Hyderabad", "Dadu", "Karachi", "Jacobabad", "Larkana", "Khairpur", "Ghotki", "MirpurKhas", "Sanghar", "Sukkur", "Kashmore", "Shikarpur", "TandoAllahyar", "Tando-MuhammadKhan", "Nawabshah", "Umarkot", "ShahdadKot", "Badin", "Jamshoro", "Kotri", "Thatta", "Shahdadpur", "NaushahroFeroze", "RCWRohri", "RatoDero", "Sakrand", "Moro", "TandoAdam", "Mehrabpur", "MirpurMathelo", "Daharki", "Sehwan", "Gambat", "Thul", "Mithi", "Khipro", "ShahpurChakar", "Digri", "Kandiaro", "Dokri", "Ranipur", "Hala", "Islamkot", "Sobho Dero", "Keti", "Pirjo Goth", "Sinjhoro", "Madeji", "Kunri", "MalirContonment", "Nagarparkar"};
 
-string Punjab[58] = {"Lahore", "Faisalabad", "Rawalpindi", "Gujranwala", "Multan", "bahawalpur", "Sargodha", "Sialkot", "Sheikhupura", "Rahim Yar Khan", "Jhang", "Dera Ghazi Khan", "Gujrat", "Sahiwal", "Wah Cantonment", "Kasur", "Okara", "Chiniot", "Kamoke", "Hafizabad", "Sadiqabad", "Burewala", "Khanewal", "Muzaffargarh", "Mandi Bahauddin", "Jhelum", "Khanpur", "Pakpattan", "Daska", "Gojra", "Muridke", "Bahawalnagar", "Samundri", "Jaranwala", "Chishtian", "Attock", "Vehari", "Kot Abdul Malik", "Ferozewala", "Chakwal", "Gujranwala", "Kamalia", "Ahmedpur East", "Kot Addu", "Wazirabad", "Layyah", "Taxila", "Khushab", "Mianwali", "Lodhran", "Hasilpur", "Bhakkar", "Arifwala", "Sambrial", "Jatoi", "Haroonabad", "Narowal", "Bhalwal"};
+std::string Punjab[58] = {"Lahore", "Faisalabad", "Rawalpindi", "Gujranwala", "Multan", "bahawalpur", "Sargodha", "Sialkot", "Sheikhupura", "RahimYarKhan", "Jhang", "DeraGhaziKhan", "Gujrat", "Sahiwal", "WahCantonment", "Kasur", "Okara", "Chiniot", "Kamoke", "Hafizabad", "Sadiqabad", "Burewala", "Khanewal", "Muzaffargarh", "MandiBahauddin", "Jhelum", "Khanpur", "Pakpattan", "Daska", "Gojra", "Muridke", "Bahawalnagar", "Samundri", "Jaranwala", "Chishtian", "Attock", "Vehari", "KotAbdulMalik", "Ferozewala", "Chakwal", "Gujranwala", "Kamalia", "AhmedpurEast", "KotAddu", "Wazirabad", "Layyah", "Taxila", "Khushab", "Mianwali", "Lodhran", "Hasilpur", "Bhakkar", "Arifwala", "Sambrial", "Jatoi", "Haroonabad", "Narowal", "Bhalwal"};
 
-string Balochistan[54] = {"Quetta", "Turbat", "Khuzdar", "Hub", "Chaman", "Dera Murad Jamali", "Gwadar", "Dera Allah Yar", "Usta Mohammad", "Sui Town", "Sibi", "Loralai", "Tump", "Nushki", "Zhob", "Kharan", "Chitkan", "Khanozai", "Buleda", "Saranan", "Zehri", "Qalat", "Tasp", "Surab", "Pishin", "Mastung", "Qilla Saifullah", "Pasni", "Nal", "Winder", "Uthal", "Huramzai", "Muslim Bagh", "Dera Bugti", "Qilla Abdullah", "Bela", "Wadh", "Washuk", "Awaran", "Machh" ,"Jiwani", "Ormara", "Kohlu", "Bhag", "Dalbandin", "Dhadar", "Musakhel", "Harnai", "Dureji", "Sohbatpur", "Gajjar Mashkay", "Barkhan", "Shahrug", "Duki"};
+std::string Balochistan[54] = {"Quetta", "Turbat", "Khuzdar", "Hub", "Chaman", "DeraMuradJamali", "Gwadar", "DeraAllahYar", "UstaMohammad", "SuiTown", "Sibi", "Loralai", "Tump", "Nushki", "Zhob", "Kharan", "Chitkan", "Khanozai", "Buleda", "Saranan", "Zehri", "Qalat", "Tasp", "Surab", "Pishin", "Mastung", "Qilla Saifullah", "Pasni", "Nal", "Winder", "Uthal", "Huramzai", "MuslimBagh", "DeraBugti", "QillaAbdullah", "Bela", "Wadh", "Washuk", "Awaran", "Machh" ,"Jiwani", "Ormara", "Kohlu", "Bhag", "Dalbandin", "Dhadar", "Musakhel", "Harnai", "Dureji", "Sohbatpur", "GajjarMashkay", "Barkhan", "Shahrug", "Duki"};
 
-string KPK[46] = {"Peshawar", "Mardan", "Mingora", "Kohat", "Dera Ismail Khan", "Abbottabad", "Mansehra", "Swabi", "Nowshera", "Kabal", "Charsadda", "Barikot", "Shabqadar", "haripur", "Takht-e-Bahi", "Paharpur", "Batkhela", "Jamrud", "Bahrain", "Lakki Marwat", "Pabbi", "Topi", "Jehangira", "Karak", "Bannu", "Chitral", "Hangu", "Havelian", "Khwazakhela", "Khalabat", "Tank", "Dir", "Matta", "Tordher", "Timargara", "Paroa", "Amangarh", "Risalpur", "Nawan Shehr", "Sadda", "Landi Kotal", "Tangi", "Akora Khattak", "Tall", "Zaida", "Utmanzai"};
+std::string KPK[46] = {"Peshawar", "Mardan", "Mingora", "Kohat", "DeraIsmailKhan", "Abbottabad", "Mansehra", "Swabi", "Nowshera", "Kabal", "Charsadda", "Barikot", "Shabqadar", "haripur", "TakhteBahi", "Paharpur", "Batkhela", "Jamrud", "Bahrain", "LakkiMarwat", "Pabbi", "Topi", "Jehangira", "Karak", "Bannu", "Chitral", "Hangu", "Havelian", "Khwazakhela", "Khalabat", "Tank", "Dir", "Matta", "Tordher", "Timargara", "Paroa", "Amangarh", "Risalpur", "Nawan Shehr", "Sadda", "Landi Kotal", "Tangi", "Akora Khattak", "Tall", "Zaida", "Utmanzai"};
 
-string Capital = "Islamabad";
+std::string Capital = "Islamabad";
 
-string exactdate()
+std::string temp;
+
+std::string exactdate()
 {
-    string date, temp;
+    std::string date;
 
     time_t c_date = time(0);
 
@@ -27,61 +30,11 @@ string exactdate()
 
     date = date + DATE[9];
 
-    temp = temp + DATE[4];
+    date = date + DATE[4];
 
-    temp = temp + DATE[5];
+    date = date + DATE[5];
 
-    temp = temp + DATE[6];
-
-    if (temp == "Jan")
-    {
-        date = date + "01";
-
-    }else if (temp == "Feb")
-    {
-        date = date + "02";
-
-    }else if (temp == "Feb")
-    {
-        date = date + "02";
-        
-    }else if (temp == "Mar")
-    {
-        date = date + "03";
-        
-    }else if (temp == "Apr")
-    {
-        date = date + "05";
-        
-    }else if (temp == "Jun")
-    {
-        date = date + "06";
-        
-    }else if (temp == "Jul")
-    {
-        date = date + "07";
-        
-    }else if (temp == "Aug")
-    {
-        date = date + "08";
-        
-    }else if (temp == "Sep")
-    {
-        date = date + "09";
-        
-    }else if (temp == "Oct")
-    {
-        date = date + "10";
-        
-    }else if (temp == "Nov")
-    {
-        date = date + "11";
-        
-    }else if (temp == "Dec")
-    {
-        date = date + "12";
-        
-    }
+    date = date + DATE[6];
 
     date = date + DATE[20];
 
@@ -94,9 +47,9 @@ string exactdate()
     return date;
 }
 
-string exacttime()
+std::string exacttime()
 {
-    string Time, temp;
+    std::string Time, temp;
     
     time_t c_time = time(0);
 
@@ -126,10 +79,9 @@ class Court
         string CNIC_male;
         string CNIC_female;
         int n_marriagepaper;
-        int marriagepaper[100];
+        vector<int> marriagepaper;
         static int Marriagecount;
         static int Divorcecount;
-        int check = 0;
     public:
         Court()
         {
@@ -153,13 +105,13 @@ class Court
 			srand(time(0));
 
 			regenerate:
-                n_marriagepaper=((rand() % (upper_number - lower_number + 1)) + lower_number);
+                n_marriagepaper = ((rand() % (upper_number - lower_number + 1)) + lower_number);
 			
-                marriagepaper[check]=n_marriagepaper;
+                marriagepaper.push_back(n_marriagepaper);
 
-			    for(int i = 0;i < 100; i++)
+			    for(int i = 0;i < marriagepaper.size(); i++)
                 {
-				    for(int j= i + 1;j<100;j++)
+				    for(int j= i + 1;j < marriagepaper.size();j++)
                     {
 					    if(marriagepaper[i] == marriagepaper[j])
                         {
@@ -167,12 +119,33 @@ class Court
 					    }
 					}
 				}
-				check++;
+                Marriagecount++;
 		}
 
         int getn_marriagepaper()
         {
             return n_marriagepaper;
+        }
+
+        void setDivorce(int marriage)
+        {
+            for (int i = 0; i < marriagepaper.size(); i++)
+            {
+                if (marriage == marriagepaper[i])
+                {
+                    for (int j = i; j < marriagepaper.size(); j++)
+                    {
+                        for (int k = i + 1; k < marriagepaper.size(); k++)
+                        {
+                            marriagepaper[j] = marriagepaper[k];
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
         }
 };
 
@@ -188,6 +161,7 @@ class Hospital
         string deathdate;
         string CNIC_father;
         string CNIC_mother;
+        string statusofhospital;
         string locationofhospital;
         char gender;
         int age;
@@ -199,7 +173,7 @@ class Hospital
 
         };
 
-        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, string locationofhospital, char gender)
+        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, string locationofhospital, char gender, string statusofhospital)
         {
             this->name = name;
 
@@ -212,6 +186,8 @@ class Hospital
             this->CNIC_father = CNIC_father;
 
             this->CNIC_mother = CNIC_mother;
+
+            this->statusofhospital = statusofhospital;
 
             this->locationofhospital = locationofhospital;
 
@@ -341,39 +317,40 @@ class Hospital
 
         }
 
-
 };
 
 class Nadra : public Court, public Hospital
 {
     private:
-        string name;
-        string fathername;
-        string mothername;
-        string f_grandfather;
-        string f_grandmother;
-        string m_grandfather;
-        string m_grandmother;
-        string CNIC;
-        string birthdate;
-        string birthtime;
-        string deathdate;
-        string deathtime;
-        string religion;
-        string relationshipstatus;
-        string educationstatus;
-        string country;
-        string province = "province";
-        string dateofissue;
-        string dateofexpiry;
-        string spouse;
-        string Citizenship_status;
-        string employment_status;
-        char gender;     
         int age;
+        std::string birthdate;
+        std::string birthtime;
+        std::string Citizenship_status;
+        std::string country;
+        std::string CNIC;
+        std::string city;
+        std::string deathdate;
+        std::string deathtime;
+        std::string dateofissue;
+        std::string dateofexpiry;
+        std::string educationstatus;
+        std::string employment_status;
+        std::string fathername;
+        std::string f_grandfather;
+        std::string f_grandmother;
+        char gender;     
+        std::string mothername;
+        std::string m_grandfather;
+        std::string m_grandmother;
         int marriagepaper; 
-        static int population;
+        std::string firstname;
+        std::string lastname;
         static int overeighteen;
+        static int population;
+        std::string province = "province";
+        std::string religion;
+        std::string relationshipstatus;
+        std::string spouse;
         static int undereighteen;
 
     public:
@@ -382,22 +359,43 @@ class Nadra : public Court, public Hospital
         {
 
         };
-
-        Nadra(string name, string fathername, string mothername, string birthdate, string birthtime, string religion, char gender, string country, string city)
+        
+        void setemploymentstatus(string employment_status)
         {
-            this->name = name;
+            this->employment_status = employment_status;
+        }
+
+        std::string getemploymentstatus()
+        {
+            return employment_status;
+        }
+
+        Nadra(std::string firstname, std::string lastname, std::string fathername, std::string mothername, std::string religion, char gender, std::string city)
+        {
+            this->firstname = firstname;
+            this->lastname = lastname;
             this->fathername = fathername;
             this->mothername = mothername;
-            this->birthdate = birthdate;
-            this->birthtime = birthtime;
+            this->city = city;
+            this->religion = religion;
+            this->gender = gender;
+            relationshipstatus = "single";
+            this->birthdate = exactdate();
+            this->birthtime = exacttime();
             age = 0;
-
+            undereighteen++;
+            population++;
             setdateofissue();
         }
 
-        void setname(string name)
+        void setfirstname(std::string firstname)
         {
-            this->name = name;
+            this->firstname = firstname;
+        }
+
+        void setlastname(std::string lastname)
+        {
+            this->lastname = lastname;
         }
 
         void setdateofissue()
@@ -405,7 +403,7 @@ class Nadra : public Court, public Hospital
             dateofissue = exactdate();
         }
 
-        string getdateofissue()
+        std::string getdateofissue()
         {
             return dateofissue;
         }
@@ -422,62 +420,77 @@ class Nadra : public Court, public Hospital
 
         }
 
-        string getdateofexpiry()
+        std::string getdateofexpiry()
         {
             return dateofexpiry;
         }
 
-        string getname()
+        std::string getfirstname()
         {
-            return name;
+            return firstname;
         }
 
-        void setfathername(string fathername)
+        std::string getlastname()
+        {
+            return lastname;
+        }
+
+        void setfathername(std::string fathername)
         {
             this->fathername = fathername;
         }
 
-        string getfathername()
+        std::string getfathername()
         {
             return fathername;
         }
 
-        void setmothername(string mothername)
+        void setmothername(std::string mothername)
         {
             this->mothername = mothername;
         }
 
-        string getmothername()
+        std::string getmothername()
         {
             return mothername;
         }
 
-        void setf_grandfather(string f_grandfather)
+        void setf_grandfather(std::string f_grandfather)
         {
             this->f_grandfather = f_grandfather;
         }
 
-        string getf_grandfather()
+        std::string getf_grandfather()
         {
             return f_grandfather;
         }
 
-        void setf_grandmother(string f_grandmother)
+        void setf_grandmother(std::string f_grandmother)
         {
             this->f_grandmother = f_grandmother;
         }
 
-        string getf_grandmother()
+        std::string getf_grandmother()
         {
             return f_grandmother;
         }
 
-        void setprovince(Hospital & hospital)
+        void setcity(std::string city)
+        {
+            this->city = city;
+        }
+
+        std::string getcity()
+        {
+            return city;
+        }
+
+        void setprovince()
         {
 
             for (int i = 0; i < 51; i++)
             {
-                if ((Sindh[i].compare(hospital.getlocationofhospital())) == 0)
+                if ((Sindh[i].compare(city)))
                 {
                     province = "Sindh";
 
@@ -487,7 +500,7 @@ class Nadra : public Court, public Hospital
             }
             for (int j = 0; j < 54; j++)
             {
-                if ((Balochistan[j].compare(hospital.getlocationofhospital())) == 0)
+                if ((Balochistan[j].compare(city)))
                 {
                     province = "Balochistan";
 
@@ -497,7 +510,7 @@ class Nadra : public Court, public Hospital
             }
             for (int k = 0; k < 58; k++)
             {
-                if ((Punjab[k].compare(hospital.getlocationofhospital())) == 0)
+                if ((Punjab[k].compare(city)))
                 {
                     province = "Punjab";
 
@@ -507,7 +520,7 @@ class Nadra : public Court, public Hospital
             }
             for (int l = 0; l < 46; l++)
             {
-                if ((KPK[l].compare(hospital.getlocationofhospital())) == 0)
+                if ((KPK[l].compare(city)))
                 {
                     province = "KPK";
 
@@ -515,7 +528,7 @@ class Nadra : public Court, public Hospital
 
                 }
             }
-            if ((Capital.compare(hospital.getlocationofhospital())) == 0)
+            if ((Capital.compare(city)))
             {
                 province = "Capital";
 
@@ -525,27 +538,40 @@ class Nadra : public Court, public Hospital
                 int waste = 0;
         }
 
-        string getprovince()
+        std::string getprovince()
         {
             return province;
         }
 
-        void setm_grandfather(string m_grandfather)
+        void setcountry()
+        {
+            if (((getprovince().compare("Sindh")) == 0) || ((getprovince().compare("Baclochistan")) == 0) || ((getprovince().compare("Punjab")) == 0) || ((getprovince().compare("KPK")) == 0) || ((getprovince().compare("Capital")) == 0))
+            {
+                country = "Pakistan";
+
+            }else
+            {
+                country = "International";
+            }
+            
+        }
+
+        void setm_grandfather(std::string m_grandfather)
         {
             this->m_grandfather = m_grandfather;
         }
 
-        string getm_grandfather()
+        std::string getm_grandfather()
         {
             return m_grandfather;
         }
 
-        void setm_grandmother(string m_grandmother)
+        void setm_grandmother(std::string m_grandmother)
         {
             this->m_grandmother = m_grandmother;
         }
 
-        string getm_grandmother()
+        std::string getm_grandmother()
         {
             return m_grandmother;
         }
@@ -556,14 +582,36 @@ class Nadra : public Court, public Hospital
 
             CNIC = CNIC + province[0];
 
-            CNIC = CNIC + getlocationofhospital()[0];
+            CNIC = CNIC + city[0];
 
             CNIC = CNIC + "-";
+
+            if (gender == 'M')
+            {
+                CNIC = CNIC + "1";
+
+            }else
+            {
+                CNIC = CNIC + "0";
+            }
+
+            CNIC = CNIC + to_string(firstname.length());
+
+            CNIC = CNIC + to_string(fathername.length());
             
-                       
+            CNIC = CNIC + exactdate()[0];
+
+            CNIC = CNIC + exactdate()[1];
+
+            CNIC  = CNIC + exacttime();
+
+            srand(time(0));
+
+            CNIC = CNIC + to_string((rand() % 9));
+            
         }
 
-        string getCNIC()
+        std::string getCNIC()
         {
             return CNIC;
         }
@@ -583,11 +631,31 @@ class Nadra : public Court, public Hospital
             dateofexpiry = exactdate();
         }
 
-        void checkeighteen ()
+        void checkforeighteen ()
         {
         	cout<<"Percentage of People under 18: "<<(undereighteen/population)*100<<"%"<<endl;
         	cout<<"Percentage of People over 18: "<<(overeighteen/population)*100<<"%"<<endl;
 		}
+
+        void setage(int age)
+        {
+            this->age = age;
+
+            if (age >= 18)
+            {
+                overeighteen++;
+                undereighteen--;
+            }
+            
+        }
+
+        void personaldetails()
+        {
+            cout<<"Your name is "<<getname()<<endl;
+            cout<<"Your father name is "<<getfathername()<<endl;
+            cout<<"Your mother name is "<<getmothername()<<endl;
+            cout<<"Your CNIC number is "<<getCNIC()<<endl;
+        }
 
 };
 
@@ -597,29 +665,40 @@ int Nadra :: overeighteen = 0;
 
 int main()
 {
-    int choice = 0;
+    int choice1 = 0, choice2 = 0, choice3 = 0;
 
     cout<<"Enter 1 For Court\nEnter 2 For Hospital\nEnter 3 For Nadra"<<endl;
 
-    cin>>choice;
+    cin>>choice1;
 
-    Hospital H("John", "David", "Sarah", "t", "r", "Multan", 'M');
+    if (choice1 == 1)
+    {
+        cout<<"Enter 1 for registering a marriage\nEnter 2 for registering a divorce"<<endl;
 
-    Nadra m;
+        cin>>choice2;
 
-    cout<<H.getlocationofhospital()<<endl;
+    }else if (choice1 == 2)
+    {
+        cout<<"Enter 1 for Birth\nEnter 2 for Death"<<endl;
 
-    m.setprovince(H);
+        cin>>choice2;
 
-    cout<<m.getprovince()<<endl;
+    }else if (choice1 == 3)
+    {
+        cout<<"Enter 1 for B-form\nEnter 2 for CNIC\nEnter 3 for death certificate\nEnter 4 for others"<<endl;
 
-    H.setlocationofhospital("Karachi");
+        cin>>choice2;
+    }
+    cout<<exactdate()<<endl;
 
-    cout<<H.getlocationofhospital()<<endl;
+    cout<<exactdate().length()<<endl;
 
-    m.setprovince(H);
+    Hospital H("John", "David", "Sarah", "t", "r", "Multan", 'M', "public");
 
-    cout<<m.getprovince()<<endl;
+    Nadra m("John", "Hello", "David", "Sarah", "Islam", 'M', "Karachi");
 
-
+    m.setprovince();
+    m.setcountry();
+    m.setCNIC();
+    m.personaldetails();
 }
