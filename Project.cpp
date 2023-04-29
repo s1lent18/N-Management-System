@@ -656,7 +656,15 @@ class Nadra : public Court, public Hospital
             cout<<"Your mother name is "<<getmothername()<<endl;
             cout<<"Your CNIC number is "<<getCNIC()<<endl;
         }
-
+        bool check_marriagepaper()
+        {
+        	if(getn_marriagepaper() == marriagepaper ){
+        		return true;
+			}
+			else if(getn_marriagepaper() != marriagepaper){
+				return false;
+			}
+		}
 };
 
 int Nadra :: population = 0;
