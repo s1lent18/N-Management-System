@@ -4,7 +4,10 @@
 #include <ctime>
 #include <cstdlib>
 #include <vector>
+#include <fstream>
 using namespace std;
+
+class Nadra;
 
 std::string Sindh[51] = {"Hyderabad", "Dadu", "Karachi", "Jacobabad", "Larkana", "Khairpur", "Ghotki", "MirpurKhas", "Sanghar", "Sukkur", "Kashmore", "Shikarpur", "TandoAllahyar", "Tando-MuhammadKhan", "Nawabshah", "Umarkot", "ShahdadKot", "Badin", "Jamshoro", "Kotri", "Thatta", "Shahdadpur", "NaushahroFeroze", "RCWRohri", "RatoDero", "Sakrand", "Moro", "TandoAdam", "Mehrabpur", "MirpurMathelo", "Daharki", "Sehwan", "Gambat", "Thul", "Mithi", "Khipro", "ShahpurChakar", "Digri", "Kandiaro", "Dokri", "Ranipur", "Hala", "Islamkot", "Sobho Dero", "Keti", "Pirjo Goth", "Sinjhoro", "Madeji", "Kunri", "MalirContonment", "Nagarparkar"};
 
@@ -149,7 +152,7 @@ class Court
         }
 };
 
-class Hospital
+class Hospital : public Nadra
 {
     private:
         string name;
@@ -161,7 +164,7 @@ class Hospital
         string deathdate;
         string CNIC_father;
         string CNIC_mother;
-        string statusofhospital;
+        static string statusofhospital;
         string locationofhospital;
         char gender;
         int age;
@@ -300,7 +303,7 @@ class Hospital
         {
             return deathdate;
         }
-
+        
         string getdeathtime()
         {
             return deathtime;
@@ -328,6 +331,7 @@ class Nadra : public Court, public Hospital
         std::string Citizenship_status;
         std::string country;
         std::string CNIC;
+        vector<string> AllCNIC;
         std::string city;
         std::string deathdate;
         std::string deathtime;
@@ -396,6 +400,16 @@ class Nadra : public Court, public Hospital
         void setlastname(std::string lastname)
         {
             this->lastname = lastname;
+        }
+
+        void setreligion(string religion)
+        {
+            this->religion = religion;
+        }
+
+        string getreligion()
+        {
+            return religion;
         }
 
         void setdateofissue()
@@ -578,37 +592,52 @@ class Nadra : public Court, public Hospital
 
         void setCNIC()
         {
-            CNIC = CNIC + country[0];
+            regenerate:
 
-            CNIC = CNIC + province[0];
+                CNIC = CNIC + country[0];
 
-            CNIC = CNIC + city[0];
+                CNIC = CNIC + province[0];
 
-            CNIC = CNIC + "-";
+                CNIC = CNIC + city[0];
 
-            if (gender == 'M')
-            {
-                CNIC = CNIC + "1";
+                CNIC = CNIC + "-";
 
-            }else
-            {
-                CNIC = CNIC + "0";
-            }
+                if (gender == 'M')
+                {
+                    CNIC = CNIC + "1";
 
-            CNIC = CNIC + to_string(firstname.length());
+                }else
+                {
+                    CNIC = CNIC + "0";
+                }
 
-            CNIC = CNIC + to_string(fathername.length());
-            
-            CNIC = CNIC + exactdate()[0];
+                CNIC = CNIC + to_string(firstname.length());
 
-            CNIC = CNIC + exactdate()[1];
+                CNIC = CNIC + to_string(fathername.length());
 
-            CNIC  = CNIC + exacttime();
+                CNIC = CNIC + exacttime();
 
-            srand(time(0));
+                CNIC = CNIC + firstname[0];
 
-            CNIC = CNIC + to_string((rand() % 9));
-            
+                CNIC = CNIC + mothername[0];
+
+                CNIC = CNIC + "-";
+                
+                srand(time(0));
+
+                CNIC = CNIC + to_string((rand() % 9));
+
+                for (int i = 0; i < AllCNIC.size(); i++)
+                {
+                    if (CNIC.compare(AllCNIC[i]))
+                    {
+                        goto regenerate;
+                    }
+                    
+                }
+                
+
+
         }
 
         std::string getCNIC()
@@ -651,7 +680,8 @@ class Nadra : public Court, public Hospital
 
         void personaldetails()
         {
-            cout<<"Your name is "<<getname()<<endl;
+            cout<<"Your first name is "<<getfirstname()<<endl;
+            cout<<"Your last name is "<<getlastname()<<endl;
             cout<<"Your father name is "<<getfathername()<<endl;
             cout<<"Your mother name is "<<getmothername()<<endl;
             cout<<"Your CNIC number is "<<getCNIC()<<endl;
@@ -697,9 +727,6 @@ int main()
 
         cin>>choice2;
     }
-    cout<<exactdate()<<endl;
-
-    cout<<exactdate().length()<<endl;
 
     Hospital H("John", "David", "Sarah", "t", "r", "Multan", 'M', "public");
 
@@ -709,4 +736,6 @@ int main()
     m.setcountry();
     m.setCNIC();
     m.personaldetails();
+    m.checkforeighteen();
+    
 }
