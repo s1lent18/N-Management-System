@@ -2,12 +2,13 @@
 #include <cmath>
 #include <string>
 #include <ctime>
+#include <cstring>
 #include <cstdlib>
 #include <vector>
 #include <fstream>
 using namespace std;
 
-class Nadra;
+
 
 std::string Sindh[51] = {"Hyderabad", "Dadu", "Karachi", "Jacobabad", "Larkana", "Khairpur", "Ghotki", "MirpurKhas", "Sanghar", "Sukkur", "Kashmore", "Shikarpur", "TandoAllahyar", "Tando-MuhammadKhan", "Nawabshah", "Umarkot", "ShahdadKot", "Badin", "Jamshoro", "Kotri", "Thatta", "Shahdadpur", "NaushahroFeroze", "RCWRohri", "RatoDero", "Sakrand", "Moro", "TandoAdam", "Mehrabpur", "MirpurMathelo", "Daharki", "Sehwan", "Gambat", "Thul", "Mithi", "Khipro", "ShahpurChakar", "Digri", "Kandiaro", "Dokri", "Ranipur", "Hala", "Islamkot", "Sobho Dero", "Keti", "Pirjo Goth", "Sinjhoro", "Madeji", "Kunri", "MalirContonment", "Nagarparkar"};
 
@@ -152,7 +153,7 @@ class Court
         }
 };
 
-class Hospital : public Nadra
+class Hospital
 {
     private:
         string name;
@@ -164,7 +165,7 @@ class Hospital : public Nadra
         string deathdate;
         string CNIC_father;
         string CNIC_mother;
-        static string statusofhospital;
+        string statusofhospital;
         string locationofhospital;
         char gender;
         int age;
@@ -340,12 +341,8 @@ class Nadra : public Court, public Hospital
         std::string educationstatus;
         std::string employment_status;
         std::string fathername;
-        std::string f_grandfather;
-        std::string f_grandmother;
-        char gender;     
+        string gender;     
         std::string mothername;
-        std::string m_grandfather;
-        std::string m_grandmother;
         int marriagepaper; 
         std::string firstname;
         std::string lastname;
@@ -374,7 +371,7 @@ class Nadra : public Court, public Hospital
             return employment_status;
         }
 
-        Nadra(std::string firstname, std::string lastname, std::string fathername, std::string mothername, std::string religion, char gender, std::string city)
+        Nadra(std::string firstname, std::string lastname, std::string fathername, std::string mothername, std::string religion, string gender, std::string city)
         {
             this->firstname = firstname;
             this->lastname = lastname;
@@ -395,6 +392,24 @@ class Nadra : public Court, public Hospital
         void setfirstname(std::string firstname)
         {
             this->firstname = firstname;
+        }
+
+        void setGender()
+        {
+            if (getgender() == 'M')
+            {
+                gender = "Male";
+
+            } else if (getgender() == 'F')
+            {
+                gender = "Female";
+            }
+            
+        }
+
+        string getGender()
+        {
+            return gender;
         }
 
         void setlastname(std::string lastname)
@@ -467,26 +482,6 @@ class Nadra : public Court, public Hospital
         std::string getmothername()
         {
             return mothername;
-        }
-
-        void setf_grandfather(std::string f_grandfather)
-        {
-            this->f_grandfather = f_grandfather;
-        }
-
-        std::string getf_grandfather()
-        {
-            return f_grandfather;
-        }
-
-        void setf_grandmother(std::string f_grandmother)
-        {
-            this->f_grandmother = f_grandmother;
-        }
-
-        std::string getf_grandmother()
-        {
-            return f_grandmother;
         }
 
         void setcity(std::string city)
@@ -570,24 +565,26 @@ class Nadra : public Court, public Hospital
             
         }
 
-        void setm_grandfather(std::string m_grandfather)
+        string getcountry()
         {
-            this->m_grandfather = m_grandfather;
+            return country;
         }
 
-        std::string getm_grandfather()
+        void setcitizenshipstatus()
         {
-            return m_grandfather;
+            if (getcountry() == "Pakistan")
+            {
+                Citizenship_status = "Pakistani";
+
+            } else
+            {
+                Citizenship_status = "Foreign Passport Holder";
+            }   
         }
 
-        void setm_grandmother(std::string m_grandmother)
+        string getcitizenshipstatus()
         {
-            this->m_grandmother = m_grandmother;
-        }
-
-        std::string getm_grandmother()
-        {
-            return m_grandmother;
+            return Citizenship_status;
         }
 
         void setCNIC()
@@ -602,7 +599,7 @@ class Nadra : public Court, public Hospital
 
                 CNIC = CNIC + "-";
 
-                if (gender == 'M')
+                if (gender == "Male")
                 {
                     CNIC = CNIC + "1";
 
@@ -635,8 +632,6 @@ class Nadra : public Court, public Hospital
                     }
                     
                 }
-                
-
 
         }
 
@@ -678,6 +673,11 @@ class Nadra : public Court, public Hospital
             
         }
 
+        int getage()
+        {
+            return age;
+        } 
+
         void personaldetails()
         {
             cout<<"Your first name is "<<getfirstname()<<endl;
@@ -685,13 +685,115 @@ class Nadra : public Court, public Hospital
             cout<<"Your father name is "<<getfathername()<<endl;
             cout<<"Your mother name is "<<getmothername()<<endl;
             cout<<"Your CNIC number is "<<getCNIC()<<endl;
+            cout<<"Your age is "<<getage()<<endl;
+            cout<<"Your gender is "<<getGender()<<endl;
+            cout<<"You are a "<<getcitizenshipstatus()<<endl;
+            cout<<"You are currently a "<<getemploymentstatus()<<endl;
+            cout<<"Your religion is "<<getreligion()<<endl;
+            filing();
         }
+
+        void filing()
+        {
+            char array[100];
+
+            fstream File;
+
+            File.open("Project.txt", ios::app);
+
+            strcpy(array, getfirstname().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getlastname().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getfathername().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getmothername().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getCNIC().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, to_string(getage()).c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getGender().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getcitizenshipstatus().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getemploymentstatus().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getreligion().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            File.close();
+
+        }
+
+        void readfile()
+        {
+            char arr[100];
+
+            fstream File("Project.txt");
+
+            while(1)
+            {
+                File >> arr;
+
+                if (File.eof())
+                {
+                    break;
+                }
+
+                cout<<arr<<endl;
+                
+            }
+            File.close();
+        }
+
         bool check_marriagepaper()
         {
-        	if(getn_marriagepaper() == marriagepaper ){
+        	if(getn_marriagepaper() == marriagepaper )
+            {
         		return true;
 			}
-			else if(getn_marriagepaper() != marriagepaper){
+			else if(getn_marriagepaper() != marriagepaper)
+            {
 				return false;
 			}
 		}
@@ -730,12 +832,13 @@ int main()
 
     Hospital H("John", "David", "Sarah", "t", "r", "Multan", 'M', "public");
 
-    Nadra m("John", "Hello", "David", "Sarah", "Islam", 'M', "Karachi");
+    Nadra m("John", "Hello", "David", "Sarah", "Islam", "Male", "Karachi");
 
     m.setprovince();
     m.setcountry();
     m.setCNIC();
     m.personaldetails();
     m.checkforeighteen();
+    m.readfile();
     
 }
