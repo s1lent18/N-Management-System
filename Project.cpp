@@ -51,6 +51,57 @@ std::string exactdate()
     return date;
 }
 
+string Date()
+{
+    string date;
+
+    time_t c_date = time(0);
+
+    char * DATE = ctime(&c_date);
+
+    date = date + DATE[8];
+
+    date = date + DATE[9];
+
+    return date;
+}
+
+string Month()
+{
+    string month;
+
+    time_t c_date = time(0);
+
+    char * MONTH = ctime(&c_date);
+
+    month = month + MONTH[4];
+
+    month = month + MONTH[5];
+
+    month = month + MONTH[6];
+
+    return month;
+}
+
+string Year()
+{
+    string year;
+
+    time_t c_date = time(0);
+
+    char * YEAR = ctime(&c_date);
+
+    year = year + YEAR[20];
+
+    year = year + YEAR[21];
+
+    year = year + YEAR[22];
+
+    year = year + YEAR[23];
+
+    return year;
+}
+
 std::string exacttime()
 {
     std::string Time, temp;
@@ -156,7 +207,8 @@ class Court
 class Hospital
 {
     private:
-        string name;
+        string firstname;
+        string lastname;
         string fathername;
         string mothername;
         string birthdate;
@@ -164,10 +216,11 @@ class Hospital
         string deathtime;
         string deathdate;
         string CNIC_father;
+        string religion;
         string CNIC_mother;
         string statusofhospital;
         string locationofhospital;
-        char gender;
+        string gender;
         int age;
 
     public:
@@ -177,9 +230,11 @@ class Hospital
 
         };
 
-        Hospital(string name, string fathername, string mothername, string CNIC_father, string CNIC_mother, string locationofhospital, char gender, string statusofhospital)
+        Hospital(string firstname, string lastname,string fathername, string mothername, string religion, string CNIC_father, string CNIC_mother, string locationofhospital, string gender, string statusofhospital)
         {
-            this->name = name;
+            this->firstname = firstname;
+
+            this->lastname = lastname;
 
             this->fathername = fathername;
 
@@ -193,6 +248,8 @@ class Hospital
 
             this->statusofhospital = statusofhospital;
 
+            this->religion = religion;
+
             this->locationofhospital = locationofhospital;
 
             setbirthdate();
@@ -200,9 +257,24 @@ class Hospital
             setbirthtime();
         }
 
-        void setname(string name)
+        void setFirstname(string firstname)
         {
-            this->name = name;
+            this->firstname = firstname;
+        }
+
+        void setReligion(string religion)
+        {
+            this->religion = religion;
+        }
+
+        string getReligion()
+        {
+            return religion;
+        }
+
+        void setLastname(string lastname)
+        {
+            this->lastname = lastname;
         }
 
         void setlocationofhospital(string locationofhospital)
@@ -225,6 +297,11 @@ class Hospital
             return CNIC_father;
         }
 
+        string getLastname()
+        {
+            return lastname;
+        }
+
         void setCNIC_mother(string CNIC_mother)
         {
             this->CNIC_mother = CNIC_mother;
@@ -235,22 +312,22 @@ class Hospital
             return CNIC_mother;
         }
 
-        string getname()
+        string getFirstname()
         {
-            return name;
+            return firstname;
         }
 
-        string getfathername()
+        string getFathername()
         {
             return fathername;
         }
 
-        string getmothername()
+        string getMothername()
         {
             return mothername;
         }
 
-        char getgender()
+        string getgender()
         {
             return gender;
         }
@@ -265,7 +342,7 @@ class Hospital
             this->mothername = mothername;
         }
 
-        void setgender(char gender)
+        void setgender(string gender)
         {
             this->gender = gender;
         }
@@ -280,12 +357,12 @@ class Hospital
             birthtime = exacttime();
         }
 
-        string getbirthdate()
+        string getBirthdate()
         {
             return birthdate;
         }
 
-        string getbirthtime()
+        string getBirthtime()
         {
             return birthtime;
         }
@@ -313,9 +390,9 @@ class Hospital
         void dischargeforbirth()
         {
             cout<<"Welcome to Discharge Page"<<endl;
-            cout<<"The Name of the new born baby is "<<getname()<<endl;
-            cout<<"The Father's name is "<<getfathername()<<endl;
-            cout<<"The mother's name is "<<getmothername()<<endl;
+            cout<<"The Name of the new born baby is "<<getFirstname()<<" "<<getLastname()<<endl;
+            cout<<"The Father's name is "<<getFathername()<<endl;
+            cout<<"The mother's name is "<<getMothername()<<endl;
             cout<<"CNIC number of father is "<<getCNIC_father()<<endl;
             cout<<"CNIC number of mother is "<<getCNIC_mother()<<endl;
 
@@ -360,6 +437,16 @@ class Nadra : public Court, public Hospital
         {
 
         };
+
+        void setspouse(string spouse)
+        {
+            this->spouse = spouse;
+        }
+
+        string getspouse()
+        {
+            return spouse;
+        }
         
         void setemploymentstatus(string employment_status)
         {
@@ -371,15 +458,15 @@ class Nadra : public Court, public Hospital
             return employment_status;
         }
 
-        Nadra(std::string firstname, std::string lastname, std::string fathername, std::string mothername, std::string religion, string gender, std::string city)
+        Nadra(Hospital & obj)
         {
-            this->firstname = firstname;
-            this->lastname = lastname;
-            this->fathername = fathername;
-            this->mothername = mothername;
-            this->city = city;
+            this->firstname = obj.getFirstname();
+            this->lastname = obj.getLastname();
+            this->fathername = obj.getFathername();
+            this->mothername = obj.getMothername();
+            this->city = obj.getlocationofhospital();
             this->religion = religion;
-            this->gender = gender;
+            this->gender = obj.getgender();
             relationshipstatus = "single";
             this->birthdate = exactdate();
             this->birthtime = exacttime();
@@ -387,6 +474,10 @@ class Nadra : public Court, public Hospital
             undereighteen++;
             population++;
             setdateofissue();
+            setdateofexpiry();
+            setprovince();
+            setcountry();
+            setCNIC();
         }
 
         void setfirstname(std::string firstname)
@@ -396,11 +487,11 @@ class Nadra : public Court, public Hospital
 
         void setGender()
         {
-            if (getgender() == 'M')
+            if (getgender() == "Male")
             {
                 gender = "Male";
 
-            } else if (getgender() == 'F')
+            } else if (getgender() == "Female")
             {
                 gender = "Female";
             }
@@ -441,11 +532,31 @@ class Nadra : public Court, public Hospital
         {
             int num;
 
-            num = stoi(getdateofissue());
+            string random;
+
+            random = random + getdateofissue()[5];
+
+            random = random + getdateofissue()[6];
+
+            random = random + getdateofissue()[7];
+
+            random = random + getdateofissue()[8];
+
+            num = stoi(random);
 
             num = num + 5;
 
-            dateofexpiry = to_string(num);
+            dateofexpiry = dateofexpiry + getdateofissue()[0];
+
+            dateofexpiry = dateofexpiry + getdateofissue()[1];
+
+            dateofexpiry = dateofexpiry + getdateofissue()[2];
+
+            dateofexpiry = dateofexpiry + getdateofissue()[3];
+
+            dateofexpiry = dateofexpiry + getdateofissue()[4];
+
+            dateofexpiry = dateofexpiry + to_string(num);
 
         }
 
@@ -457,6 +568,16 @@ class Nadra : public Court, public Hospital
         std::string getfirstname()
         {
             return firstname;
+        }
+
+        void setrelationshipstatus(string relationshipstatus)
+        {
+            this->relationshipstatus = relationshipstatus;
+        }
+
+        string getrelationshipstatus()
+        {
+            return relationshipstatus;
         }
 
         std::string getlastname()
@@ -690,6 +811,14 @@ class Nadra : public Court, public Hospital
             cout<<"You are a "<<getcitizenshipstatus()<<endl;
             cout<<"You are currently a "<<getemploymentstatus()<<endl;
             cout<<"Your religion is "<<getreligion()<<endl;
+            cout<<"You are "<<getrelationshipstatus()<<endl;
+            cout<<"The date of issue of your CNIC is "<<getdateofissue()<<endl;
+            cout<<"Your CNIC will expiry on "<<getdateofexpiry()<<endl;
+            if (getrelationshipstatus() == "married")
+            {
+                cout<<"The name of your spouse is "<<getspouse()<<endl;
+            }
+            
             filing();
         }
 
@@ -700,6 +829,12 @@ class Nadra : public Court, public Hospital
             fstream File;
 
             File.open("Project.txt", ios::app);
+
+            strcpy(array, getCNIC().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
 
             strcpy(array, getfirstname().c_str());
 
@@ -720,12 +855,6 @@ class Nadra : public Court, public Hospital
             array[0] = 0;
 
             strcpy(array, getmothername().c_str());
-
-            File << array << "   ";
-
-            array[0] = 0;
-
-            strcpy(array, getCNIC().c_str());
 
             File << array << "   ";
 
@@ -756,6 +885,18 @@ class Nadra : public Court, public Hospital
             array[0] = 0;
 
             strcpy(array, getreligion().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getdateofissue().c_str());
+
+            File << array << "   ";
+
+            array[0] = 0;
+
+            strcpy(array, getdateofexpiry().c_str());
 
             File << array << "   ";
 
@@ -805,109 +946,7 @@ int Nadra :: overeighteen = 0;
 
 int main()
 {
-	Hospital H[50];
-	Nadra N[50];
     int choice1 = 0, choice2 = 0, choice3 = 0;
-    H[0]=Hospital("John", "David", "Sarah", "t", "r", "Multan", 'M', "public");
-    N[0]=Nadra("John", "Hello", "David", "Sarah", "Christianity", "Male", "Karachi");
-    H[1]=Hospital("Salman", "Rashid", "Qainat", "t", "r", "Karachi", 'M', "private");
-    N[1]=Nadra("Salman", "Ahmed", "Rashid", "Qainat", "Islam", "Male", "Karachi");
-    H[2]=Hospital("Kumar", "Sanjay", "Lakshmi", "t", "r", "Hyderabad", 'M', "public");
-    N[2]=Nadra("Kumar", "Sahu", "Sanjay", "Lakshmi", "Hinduism", "Male", "Hyderabad");
-    H[3]=Hospital("Sameer", "Hassan", "Zulaikha", "t", "r", "Sukkur", 'M', "public");
-    N[3]=Nadra("Sameer", "Soomro", "Hassan", "Zulaikha", "Islam", "Male", "Sukkur");
-    H[4]=Hospital("Maryam", "Gulbadin", "Bushra", "t", "r", "Swabi", 'F', "public");
-    N[4]=Nadra("Maryam", "Khan", "Gulbadin", "Bushra", "Islam", "Female", "Swabi");
-    H[5]=Hospital("Bilal", "Mahmoud", "Amina", "t", "r", "Damascus", 'M', "public");
-    N[5]=Nadra("Bilal", "Ahmed", "Mahmoud", "Amina", "Islam", "Male", "Islamabad");
-    H[6]=Hospital("Jalil", "Shakoor", "Sadiqa", "t", "r", "Riyadh", 'M', "private");
-    N[6]=Nadra("Jalil", "Ali", "Shakoor", "Sadiqa", "Islam", "Male", "Lahore");
-    H[7]=Hospital("Hammad", "Tariq", "Zainab", "t", "r", "Rawalpindi", 'M', "public");
-    N[7]=Nadra("Hammad", "Azeem", "Tariq", "Zainab", "Islam", "Male", "Islamabad");
-    H[8]=Hospital("Sylvester", "Samson", "Rosa", "t", "r", "Kandiaro", 'M', "public");
-    N[8]=Nadra("Sylvester", "Mello", "Samson", "Rosa", "Christianity", "Male", "Kandiaro");
-    H[9]=Hospital("Sarah", "Liam", "Meagan", "t", "r", "Faisalabad", 'F', "private");
-    N[9]=Nadra("Sarah", "Samuel", "Liam", "Meagan", "Christianity", "Female", "Faisalabad");
-    H[10]=Hospital("Deepti", "Vijay", "Sunita", "t", "r", "Dehli", 'F', "private");
-    N[10]=Nadra("Deepti", "Sharma", "Vijay", "Sunita", "Hinduism", "Female", "Larkana");
-    H[11]=Hospital("Sulaiman", "Saleem", "Ayesha", "t", "r", "RahimYarKhan", 'M', "public");
-    N[11]=Nadra("Sulaiman", "Saleem", "Saleem", "Ayesha", "Islam", "Male", "RahimYarKhan");
-    H[12]=Hospital("Maira", "Asif", "Sara", "t", "r", "Karachi", 'F', "private");
-    N[12]=Nadra("Maira", "Shaikh", "Asif", "Sara", "Islam", "Female", "Karachi");
-    H[13]=Hospital("Asifa", "Ali", "Sumaira", "t", "r", "Mingora", 'F', "public");
-    N[13]=Nadra("Asifa", "Tariq", "Ali", "Sumaira", "Islam", "Female", "Mingora");
-    H[14]=Hospital("Imran", "Nawaz", "Yasmeen", "t", "r", "Nowshera", 'M', "private");
-    N[14]=Nadra("Imran", "Khan", "Nawaz", "Yasmeen", "Islam", "Male", "Mianwali");
-    H[15]=Hospital("Sunita", "Ram", "Sunaina", "t", "r", "Sanghar", 'F', "public");
-    N[15]=Nadra("Sunita", "Ram", "Ram", "Sunaina", "Hinduism", "Female", "Sanghar");
-    H[16]=Hospital("Angel", "John", "Eve", "t", "r", "Auckland", 'M', "private");
-    N[16]=Nadra("Angel", "ken", "John", "Eve", "Christianity", "Male", "Karachi");
-    H[17]=Hospital("Sameena", "Azam", "Fozia", "t", "r", "DeraMuradJamali", 'F', "public");
-    N[17]=Nadra("Sameena", "Saleem", "Azam", "Fozia", "Islam", "Female", "Gwadar");
-	H[18]=Hospital("Ghulam", "Zubair", "Amna", "t", "r", "Jhang", 'M', "public");
-    N[18]=Nadra("Ghulam", "Ali", "Zubair", "Amna", "Islam", "Male", "Jhang");
-    H[19]=Hospital("Aabidah", "Naseem", "Rida", "t", "r", "Loralai", 'F', "public");
-    N[19]=Nadra("Aabidah", "Parveen", "Naseem", "Rida", "Islam", "Female", "Loralai");
-    H[20]=Hospital("Asim", "Junaid", "Nimra", "t", "r", "Lahore", 'M', "public");
-    N[20]=Nadra("Asim", "Theba", "Junaid", "Nimra", "Islam", "Male", "Lahore");
-    H[21]=Hospital("Shairaz", "Yahya", "Wajiha", "t", "r", "MandiBahauddin", 'M', "public");
-    N[21]=Nadra("Shairaz", "Memon", "Yahya", "Wajiha", "Islam", "Male", "MandiBahauddin");
-    H[22]=Hospital("Rida", "Tariq", "Maira", "t", "r", "Quetta", 'F', "private");
-    N[22]=Nadra("Rida", "Tariq", "Tariq", "Maira", "Islam", "Female", "Quetta");
-    H[23]=Hospital("Shanti", "Manoj", "Usha", "t", "r", "Saranan", 'F', "private");
-    N[23]=Nadra("Shanti", "Priya", "Manoj", "Usha", "Hinduism", "Female", "Saranan");
-    H[24]=Hospital("Manoj", "Vinod", "Sunita", "t", "r", "Shikarpur", 'M', "public");
-    N[24]=Nadra("Manoj", "Tiwari", "Manoj", "Usha", "Hinduism", "Male", "Shikarpur");
-    H[25]=Hospital("Peter", "Stephen", "Ruth", "t", "r", "WahCantonment", 'M', "public");
-    N[25]=Nadra("Peter", "Phillip", "Stephen", "Ruth", "Christianity", "Male", "WahCantonment");
-    H[26]=Hospital("Abuzar", "Salman", "Zainab", "t", "r", "Aleppo", 'M', "public");
-    N[26]=Nadra("Abuzar", "Ali", "Salman", "Zainab", "Islam", "Male", "Gujranwala");
-    H[27]=Hospital("Javeria", "Javed", "Bushra", "t", "r", "Tabuk", 'F', "private");
-    N[27]=Nadra("Javeria", "Javed", "Javed", "Bushra", "Islam", "Female", "Karachi");
-    H[28]=Hospital("Deepak", "Rohit", "Deepti", "t", "r", "NaushahroFeroze", 'M', "public");
-    N[28]=Nadra("Deepak", "Kalal", "Rohit", "Deepti", "Hinduism", "Male", "NaushahroFeroze");
-    H[29]=Hospital("Tayyaba", "Nauman", "Nabila", "t", "r", "UstaMohammad", 'F', "public");
-    N[29]=Nadra("Tayyaba", "Noor", "Nauman", "Nabila", "Islam", "Female", "UstaMohammad");
-    H[30]=Hospital("Kashif", "Zunair", "Naaila", "t", "r", "Khairpur", 'M', "public");
-    N[30]=Nadra("Kashif", "Zubair", "Zunair", "Naaila", "Islam", "Male", "Khairpur");
-    H[31]=Hospital("Jetha", "Jaikant", "Jainti", "t", "r", "Thatta", 'M', "public");
-    N[31]=Nadra("Jetha", "Gadha", "Jaikant", "Jainti", "Hinduism", "Male", "Thatta");
-    H[32]=Hospital("Saleem", "Akbar", "Anarkali", "t", "r", "Kabul", 'M', "public");
-    N[32]=Nadra("Saleem", "Orakzai", "Akbar", "Anarkali", "Islam", "Male", "Sahiwal");
-    H[33]=Hospital("Sualeha", "Faakhir", "Seema", "t", "r", "Karachi", 'F', "private");
-    N[33]=Nadra("Sualeha", "Faakhir", "Faakhir", "Seema", "Islam", "Female", "Karachi");
-    H[34]=Hospital("Aadil", "Omair", "Khadija", "t", "r", "Khuzdar", 'M', "private");
-    N[34]=Nadra("Aadil", "Abbas", "Omair", "Khadija", "Islam", "Male", "Khuzdar");
-    H[35]=Hospital("Khurram", "Aabid", "Naseema", "t", "r", "Gujranwala", 'M', "private");
-    N[35]=Nadra("Khurram", "Bakhsh", "Aabid", "Naseema", "Islam", "Male", "Lahore");
-    H[36]=Hospital("Zahra", "Qamar", "Aabida", "t", "r", "Islamabad", 'F', "private");
-    N[36]=Nadra("Zahra", "Qayumi", "Qamar", "Aabida", "Islam", "Female", "Islamabad");
-    H[37]=Hospital("Sufyan", "Ibrahim", "Sadaf", "t", "r", "Pesahwar", 'M', "public");
-    N[37]=Nadra("Sufyan", "Khan", "Ibrahim", "Sadaf", "Islam", "Male", "Peshawar");
-    H[38]=Hospital("Roque", "Aaron", "Gemma", "t", "r", "Sydney", 'M', "public");
-    N[38]=Nadra("Roque", "Martin", "Aaron", "Gemma", "Christianity", "Male", "Multan");
-    H[39]=Hospital("Dinesh", "Virat", "Anushka", "t", "r", "Mumbai", 'M', "public");
-    N[39]=Nadra("Dinesh", "Kartik", "Virat", "Anushka", "Hinduism", "Male", "Rawalpindi");
-    H[40]=Hospital("Hamza", "Khurram", "Zara", "t", "r", "bahawalpur", 'M', "private");
-    N[40]=Nadra("Hamza", "Saif", "Khurram", "Zara", "Islam", "Male", "bahawalpur");
-    H[41]=Hospital("Namrah", "Pervaiz", "Namira", "t", "r", "Karachi", 'F', "private");
-    N[41]=Nadra("Namrah", "Nizai", "Pervaiz", "Namira", "Islam", "Female", "Lahore");
-    H[42]=Hospital("Rana", "Irfan", "Sitara", "t", "r", "Moro", 'M', "public");
-    N[42]=Nadra("Rana", "Hamza", "Irfan", "Sitara", "Islam", "Male", "Moro");
-    H[43]=Hospital("Gopal", "Shiv", "Savitri", "t", "r", "TandoAllahyar", 'M', "public");
-    N[43]=Nadra("Gopal", "Ram", "Shiv", "Savitri", "Hinduism", "Male", "TandoAllahyar");
-    H[44]=Hospital("Jude", "Jaden", "Jess", "t", "r", "Larkana", 'M', "public");
-    N[44]=Nadra("Jude", "Lobo", "Jaden", "Jess", "Christianity", "Male", "Larkana");
-    H[45]=Hospital("Gita", "Ashok", "Anita", "t", "r", "Shikarpur", 'F', "public");
-    N[45]=Nadra("Gita", "Kumari", "Ashok", "Anita", "Hinduism", "Female", "Shikarpur");
-    H[46]=Hospital("Dania", "Shoaib", "Areeba", "t", "r", "Sargodha", 'F', "private");
-    N[46]=Nadra("Dania", "Amir", "Shoaib", "Areeba", "Islam", "Female", "Sargodha");
-    H[47]=Hospital("Danial", "kamran", "Abeeha", "t", "r", "Abbottabad", 'M', "private");
-    N[47]=Nadra("Danial", "Sohaib", "Kamran", "Abeeha", "Islam", "Male", "Abbottabad");
-    H[48]=Hospital("Ethan", "Abraham", "Abigail", "t", "r", "Munich", 'M', "private");
-    N[48]=Nadra("Ethan", "Adah", "Abraham", "Abigail", "Christianity", "Male", "Karachi");
-    H[49]=Hospital("Santosh", "Rajesh", "Rekha", "t", "r", "Kolkata", 'M', "public");
-    N[49]=Nadra("Santosh", "Vijay", "Rajesh", "Rekha", "Hinduism", "Male", "Lahore");
 
     cout<<"Enter 1 For Court\nEnter 2 For Hospital\nEnter 3 For Nadra"<<endl;
 
@@ -932,11 +971,121 @@ int main()
         cin>>choice2;
     }
 
-    N[1].setprovince();
-    N[1].setcountry();
-    N[1].setCNIC();
-    N[1].personaldetails();
-    N[1].checkforeighteen();
-    N[1].readfile();
+    Hospital q("John", "Hello", "David", "Sarah", "Islam", "t", "r", "Multan", "Male", "public");
+    Nadra m(q);
+
+    Hospital H[50];
+	Nadra N[50];
+
+    H[0]=Hospital("John", "Hello", "David", "Sarah", "Islam", "t", "r", "Multan", "Male", "public");
+    N[0]=Nadra(H[0]);
+    H[1]=Hospital("Salman", "Ahmed", "Rashid", "Qainat", "Islam", "t", "r", "Karachi", "Male", "private");
+    N[1]=Nadra(H[1]);
+    H[2]=Hospital("Kumar", "Sahu", "Sanjay", "Lakshmi", "Hinduism", "t", "r", "Hyderabad", "Male", "public");
+    N[2]=Nadra(H[2]);
+    H[3]=Hospital("Sameer", "Soomro", "Hassan", "Zulaikha", "Islam", "t", "r", "Sukkur", "Male", "public");
+    N[3]=Nadra(H[3]);
+    H[4]=Hospital("Maryam", "Khan", "Gulbadin", "Bushra", "Islam", "t", "r", "Swabi", "Female", "public");
+    N[4]=Nadra(H[4]);
+    H[5]=Hospital("Bilal", "Ahmed", "Mahmoud", "Amina", "Islam", "t", "r", "Damascus", "Male", "public");
+    N[5]=Nadra(H[5]);
+    H[6]=Hospital("Jalil", "Ali", "Shakoor", "Sadiqa", "Islam", "t", "r", "Riyadh", "Male", "private");
+    N[6]=Nadra(H[6]);
+    H[7]=Hospital("Hammad", "Azeem", "Tariq", "Zainab", "Islam", "t", "r", "Rawalpindi", "Male", "public");
+    N[7]=Nadra(H[7]);
+    H[8]=Hospital("Sylvester", "Mello", "Samson", "Rosa", "Christianity", "t", "r", "Kandiaro", "Male", "public");
+    N[8]=Nadra(H[8]);
+    H[9]=Hospital("Sarah", "Samuel", "Liam", "Meagan", "Christianity", "t", "r", "Faisalabad", "Female", "private");
+    N[9]=Nadra(H[9]);
+    H[10]=Hospital("Deepti", "Sharma", "Vijay", "Sunita", "Hinduism", "t", "r", "Dehli", "Female", "private");
+    N[10]=Nadra(H[10]);
+    H[11]=Hospital("Sulaiman", "Saleem", "Saleem", "Ayesha", "Islam", "t", "r", "RahimYarKhan", "Male", "public");
+    N[11]=Nadra(H[11]);
+    H[12]=Hospital("Maira", "Shaikh", "Asif", "Sara", "Islam", "t", "r", "Karachi", "Female", "private");
+    N[12]=Nadra(H[12]);
+    H[13]=Hospital("Asifa", "Tariq", "Ali", "Sumaira", "Islam", "t", "r", "Mingora", "Female", "public");
+    N[13]=Nadra(H[13]);
+    H[14]=Hospital("Imran", "Khan", "Nawaz", "Yasmeen", "Islam", "t", "r", "Nowshera", "Male", "private");
+    N[14]=Nadra(H[14]);
+    H[15]=Hospital("Sunita", "Ram", "Ram", "Sunaina", "Hinduism", "t", "r", "Sanghar", "Female", "public");
+    N[15]=Nadra(H[15]);
+    H[16]=Hospital("Angel", "ken", "John", "Eve", "Christianity", "t", "r", "Auckland", "Male", "private");
+    N[16]=Nadra(H[16]);
+    H[17]=Hospital("Sameena", "Saleem", "Azam", "Fozia", "Islam", "t", "r", "DeraMuradJamali", "Female", "public");
+    N[17]=Nadra(H[17]);
+	H[18]=Hospital("Ghulam", "Ali", "Zubair", "Amna", "Islam", "t", "r", "Jhang", "Male", "public");
+    N[18]=Nadra(H[18]);
+    H[19]=Hospital("Aabidah", "Parveen", "Naseem", "Rida", "Islam", "t", "r", "Loralai", "Female", "public");
+    N[19]=Nadra(H[19]);
+    H[20]=Hospital("Asim", "Theba", "Junaid", "Nimra", "Islam", "t", "r", "Lahore", "Male", "public");
+    N[20]=Nadra(H[20]);
+    H[21]=Hospital("Shairaz", "Memon", "Yahya", "Wajiha", "Islam", "t", "r", "MandiBahauddin", "Male", "public");
+    N[21]=Nadra(H[21]);
+    H[22]=Hospital("Rida", "Tariq", "Tariq", "Maira", "Islam", "t", "r", "Quetta", "Female", "private");
+    N[22]=Nadra(H[22]);
+    H[23]=Hospital("Shanti", "Priya", "Manoj", "Usha", "Hinduism", "t", "r", "Saranan", "Female", "private");
+    N[23]=Nadra(H[23]);
+    H[24]=Hospital("Manoj", "Tiwari", "Vinod", "Sunita", "Hinduism", "t", "r", "Shikarpur", "Male", "public");
+    N[24]=Nadra(H[24]);
+    H[25]=Hospital("Peter", "Phillip", "Stephen", "Ruth", "Christianity", "t", "r", "WahCantonment", "Male", "public");
+    N[25]=Nadra(H[25]);
+    H[26]=Hospital("Abuzar", "Ali", "Salman", "Zainab", "Islam", "t", "r", "Aleppo", "Male", "public");
+    N[26]=Nadra(H[26]);
+    H[27]=Hospital("Javeria", "Javed",  "Javed", "Bushra", "Islam", "t", "r", "Tabuk", "Female", "private");
+    N[27]=Nadra(H[27]);
+    H[28]=Hospital("Deepak", "Kalal", "Rohit", "Deepti", "Hinduism", "t", "r", "NaushahroFeroze", "Male", "public");
+    N[28]=Nadra(H[28]);
+    H[29]=Hospital("Tayyaba", "Noor", "Nauman", "Nabila", "Islam", "t", "r", "UstaMohammad", "Female", "public");
+    N[29]=Nadra(H[29]);
+    H[30]=Hospital("Kashif", "Zubair", "Zunair", "Naaila", "Islam", "t", "r", "Khairpur", "Male", "public");
+    N[30]=Nadra(H[30]);
+    H[31]=Hospital("Jetha", "Gadha", "Jaikant", "Jainti", "Hinduism", "t", "r", "Thatta", "Male", "public");
+    N[31]=Nadra(H[31]);
+    H[32]=Hospital("Saleem", "Orakzai", "Akbar", "Anarkali", "Islam", "t", "r", "Kabul", "Male", "public");
+    N[32]=Nadra(H[32]);
+    H[33]=Hospital("Sualeha", "Faakhir", "Faakhir", "Seema", "Islam", "t", "r", "Karachi", "Female", "private");
+    N[33]=Nadra(H[33]);
+    H[34]=Hospital("Aadil", "Abbas", "Omair", "Khadija", "Islam", "t", "r", "Khuzdar", "Male", "private");
+    N[34]=Nadra(H[34]);
+    H[35]=Hospital("Khurram", "Bakhsh", "Aabid", "Naseema", "Islam", "t", "r", "Gujranwala", "Male", "private");
+    N[35]=Nadra(H[35]);
+    H[36]=Hospital("Zahra", "Qayumi", "Qamar", "Aabida", "Islam", "t", "r", "Islamabad", "Female", "private");
+    N[36]=Nadra(H[36]);
+    H[37]=Hospital("Sufyan", "Khan", "Ibrahim", "Sadaf", "Islam", "t", "r", "Pesahwar", "Male", "public");
+    N[37]=Nadra(H[37]);
+    H[38]=Hospital("Roque", "Martin", "Aaron", "Gemma", "Christianity", "t", "r", "Sydney", "Male", "public");
+    N[38]=Nadra(H[38]);
+    H[39]=Hospital("Dinesh", "Kartik", "Virat", "Anushka", "Hinduism", "t", "r", "Mumbai", "Male", "public");
+    N[39]=Nadra(H[39]);
+    H[40]=Hospital("Hamza", "Saif", "Khurram", "Zara", "Islam", "t", "r", "bahawalpur", "Male", "private");
+    N[40]=Nadra(H[40]);
+    H[41]=Hospital("Namrah", "Nizai", "Pervaiz", "Namira", "Islam", "t", "r", "Karachi", "Female", "private");
+    N[41]=Nadra(H[41]);
+    H[42]=Hospital("Rana", "Hamza", "Irfan", "Sitara", "Islam", "t", "r", "Moro", "Male", "public");
+    N[42]=Nadra(H[42]);
+    H[43]=Hospital("Gopal", "Ram", "Shiv", "Savitri", "Hinduism", "t", "r", "TandoAllahyar", "Male", "public");
+    N[43]=Nadra(H[43]);
+    H[44]=Hospital("Jude", "Lobo", "Jaden", "Jess", "Christianity", "t", "r", "Larkana", "Male", "public");
+    N[44]=Nadra(H[44]);
+    H[45]=Hospital("Gita", "Kumari", "Ashok", "Anita", "Hinduism", "t", "r", "Shikarpur", "Female", "public");
+    N[45]=Nadra(H[45]);
+    H[46]=Hospital("Dania", "Amir", "Shoaib", "Areeba", "Islam", "t", "r", "Sargodha", "Female", "private");
+    N[46]=Nadra(H[46]);
+    H[47]=Hospital("Danial", "Sohaib", "kamran", "Abeeha", "Islam", "t", "r", "Abbottabad", "Male", "private");
+    N[47]=Nadra(H[47]);
+    H[48]=Hospital("Ethan", "Adah", "Abraham", "Abigail", "Christianity", "t", "r", "Munich", "Male", "private");
+    N[48]=Nadra(H[48]);
+    H[49]=Hospital("Santosh", "Vijay", "Rajesh", "Rekha", "Hinduism", "t", "r", "Kolkata", "Male", "public");
+    N[49]=Nadra(H[49]);
     
+    for (int i = 0; i < 50; i++)
+    {
+        N[i].filing();
+    }
+    
+    N[49].checkforeighteen();
+
+    N[49].readfile();
+
 }
+ 
