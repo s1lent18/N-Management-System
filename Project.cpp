@@ -465,19 +465,21 @@ class Nadra : public Court, public Hospital
             this->fathername = obj.getFathername();
             this->mothername = obj.getMothername();
             this->city = obj.getlocationofhospital();
-            this->religion = religion;
+            this->religion = obj.getReligion();
             this->gender = obj.getgender();
-            relationshipstatus = "single";
             this->birthdate = exactdate();
             this->birthtime = exacttime();
             age = 0;
             undereighteen++;
             population++;
+            setemploymentstatus("N/A");
+            setrelationshipstatus("Single");
             setdateofissue();
             setdateofexpiry();
             setprovince();
             setcountry();
             setCNIC();
+            setcitizenshipstatus();
         }
 
         void setfirstname(std::string firstname)
@@ -520,7 +522,27 @@ class Nadra : public Court, public Hospital
 
         void setdateofissue()
         {
-            dateofissue = exactdate();
+            dateofissue = dateofissue + exactdate()[0];
+
+            dateofissue = dateofissue + exactdate()[1];
+
+            dateofissue = dateofissue + "-";
+
+            dateofissue = dateofissue + exactdate()[2];
+
+            dateofissue = dateofissue + exactdate()[3];
+
+            dateofissue = dateofissue + exactdate()[4];
+
+            dateofissue = dateofissue + "-";
+
+            dateofissue = dateofissue + exactdate()[5];
+
+            dateofissue = dateofissue + exactdate()[6];
+
+            dateofissue = dateofissue + exactdate()[7];
+
+            dateofissue = dateofissue + exactdate()[8];
         }
 
         std::string getdateofissue()
@@ -534,13 +556,13 @@ class Nadra : public Court, public Hospital
 
             string random;
 
-            random = random + getdateofissue()[5];
-
-            random = random + getdateofissue()[6];
-
             random = random + getdateofissue()[7];
 
             random = random + getdateofissue()[8];
+
+            random = random + getdateofissue()[9];
+
+            random = random + getdateofissue()[10];
 
             num = stoi(random);
 
@@ -555,6 +577,10 @@ class Nadra : public Court, public Hospital
             dateofexpiry = dateofexpiry + getdateofissue()[3];
 
             dateofexpiry = dateofexpiry + getdateofissue()[4];
+
+            dateofexpiry = dateofexpiry + getdateofissue()[5];
+
+            dateofexpiry = dateofexpiry + getdateofissue()[6];
 
             dateofexpiry = dateofexpiry + to_string(num);
 
@@ -617,10 +643,9 @@ class Nadra : public Court, public Hospital
 
         void setprovince()
         {
-
             for (int i = 0; i < 51; i++)
             {
-                if ((Sindh[i].compare(city)))
+                if ((Sindh[i].compare(city)) == 0)
                 {
                     province = "Sindh";
 
@@ -630,7 +655,7 @@ class Nadra : public Court, public Hospital
             }
             for (int j = 0; j < 54; j++)
             {
-                if ((Balochistan[j].compare(city)))
+                if ((Balochistan[j].compare(city)) == 0)
                 {
                     province = "Balochistan";
 
@@ -640,7 +665,7 @@ class Nadra : public Court, public Hospital
             }
             for (int k = 0; k < 58; k++)
             {
-                if ((Punjab[k].compare(city)))
+                if ((Punjab[k].compare(city)) == 0)
                 {
                     province = "Punjab";
 
@@ -650,7 +675,7 @@ class Nadra : public Court, public Hospital
             }
             for (int l = 0; l < 46; l++)
             {
-                if ((KPK[l].compare(city)))
+                if ((KPK[l].compare(city)) == 0)
                 {
                     province = "KPK";
 
@@ -658,11 +683,13 @@ class Nadra : public Court, public Hospital
 
                 }
             }
-            if ((Capital.compare(city)))
+            if ((Capital.compare(city)) == 0)
             {
                 province = "Capital";
 
-                
+            } else
+            {
+                province = "International";
             }
             end:
                 int waste = 0;
@@ -699,7 +726,7 @@ class Nadra : public Court, public Hospital
 
             } else
             {
-                Citizenship_status = "Foreign Passport Holder";
+                Citizenship_status = "Foreign-Passport-Holder";
             }   
         }
 
@@ -747,8 +774,10 @@ class Nadra : public Court, public Hospital
 
                 for (int i = 0; i < AllCNIC.size(); i++)
                 {
-                    if (CNIC.compare(AllCNIC[i]))
+                    if (CNIC.compare(AllCNIC[i]) == 0)
                     {
+                        CNIC.clear();
+
                         goto regenerate;
                     }
                     
@@ -771,11 +800,6 @@ class Nadra : public Court, public Hospital
             return marriagepaper;
         }
 
-        void setdateofexpiry(string a)
-        {
-            dateofexpiry = exactdate();
-        }
-
         void checkforeighteen ()
         {
         	cout<<"Percentage of People under 18: "<<(undereighteen/population)*100<<"%"<<endl;
@@ -791,7 +815,6 @@ class Nadra : public Court, public Hospital
                 overeighteen++;
                 undereighteen--;
             }
-            
         }
 
         int getage()
@@ -812,14 +835,155 @@ class Nadra : public Court, public Hospital
             cout<<"You are currently a "<<getemploymentstatus()<<endl;
             cout<<"Your religion is "<<getreligion()<<endl;
             cout<<"You are "<<getrelationshipstatus()<<endl;
-            cout<<"The date of issue of your CNIC is "<<getdateofissue()<<endl;
-            cout<<"Your CNIC will expiry on "<<getdateofexpiry()<<endl;
             if (getrelationshipstatus() == "married")
             {
                 cout<<"The name of your spouse is "<<getspouse()<<endl;
             }
-            
+            cout<<"The date of issue of your CNIC is "<<getdateofissue()<<endl;
+            cout<<"Your CNIC will expiry on "<<getdateofexpiry()<<endl;
             filing();
+        }
+
+        void searchyouself(string cnic)
+        {
+            int count = 0;
+
+            string search;
+
+            ifstream input;
+
+            string another;
+
+            char character;
+
+            input.open("Project.txt");
+
+            while (!input.eof())
+            {
+                input >> search;
+
+                cout<<search<<endl;
+
+                if (search.compare(cnic) == 0)
+                {
+                    while (input.get(character))
+                    {
+                        if (character == ' ')
+                        {
+                            if (count == 0)
+                            {
+                                cout<<"Your CNIC is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 1)
+                            {
+                                cout<<"Your first name is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if(count == 2)
+                            {
+                                cout<<"Your last name is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 3)
+                            {
+                                cout<<"Your father name is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 4)
+                            {
+                                cout<<"Your mother's name is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 5)
+                            {
+                                cout<<"Your age is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 6)
+                            {
+                                cout<<"Your gender is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 7)
+                            {
+                                cout<<"Your citizenship status is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 8)
+                            {
+                                cout<<"Your employment status is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 9)
+                            {
+                                cout<<"Your religion is "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 10)
+                            {
+                                cout<<"Your CNIC was issued on "<<another<<endl;
+
+                                count++;
+
+                                another.clear();
+
+                            } else if (count == 11)
+                            {
+                                cout<<"Your CNIC Will expire on "<<another<<endl;
+
+                                another.clear();
+
+                                break;
+                            }
+                            
+                        } else if (character != ' ')
+                        {
+                            another = another + character;    
+
+                        }
+                    }
+
+                    if (count == 11)
+                    {
+                        break;
+                    }
+                    
+
+                }
+                
+            }
+            
         }
 
         void filing()
@@ -832,75 +996,77 @@ class Nadra : public Court, public Hospital
 
             strcpy(array, getCNIC().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getfirstname().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getlastname().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getfathername().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getmothername().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, to_string(getage()).c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getGender().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getcitizenshipstatus().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getemploymentstatus().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getreligion().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getdateofissue().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
 
             strcpy(array, getdateofexpiry().c_str());
 
-            File << array << "   ";
+            File << array << " ";
 
             array[0] = 0;
+
+            File << endl;
 
             File.close();
 
@@ -971,8 +1137,10 @@ int main()
         cin>>choice2;
     }
 
-    Hospital q("John", "Hello", "David", "Sarah", "Islam", "t", "r", "Multan", "Male", "public");
-    Nadra m(q);
+    //if(cnic.compare(N[i].getCNIC()) == 0)
+    //{
+
+    //}
 
     Hospital H[50];
 	Nadra N[50];
@@ -1086,6 +1254,12 @@ int main()
     N[49].checkforeighteen();
 
     N[49].readfile();
+
+    string a;
+
+    cin>>a;
+
+    N[49].searchyouself(a);
 
 }
  
