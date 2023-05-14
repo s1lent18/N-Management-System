@@ -512,6 +512,7 @@ class Nadra : public Court, public Hospital
             setcountry();
             setCNIC();
             setcitizenshipstatus();
+            setpassword();
         }
 
         void setfirstname(std::string firstname)
@@ -1032,6 +1033,7 @@ class Nadra : public Court, public Hospital
             
             input.close();
         }
+
         void filing()
         {
             char array[100];
@@ -1150,8 +1152,6 @@ class Nadra : public Court, public Hospital
 				return false;
 			}
 		}
-
-         // a represents the choice given below, b represent the edit, c represents the cnic number
        
         void edit(string b, string c)
         {
@@ -1218,6 +1218,7 @@ int main()
     Hospital H[50];
 	Nadra N[50];
     Court C[50];
+    string ccnic, through;
 
     H[0]=Hospital("John", "Hello", "David", "Sarah", "Islam", "t", "r", "Multan", "Male", "public");
     N[0]=Nadra(H[0]);
@@ -1326,496 +1327,504 @@ int main()
     }
     int c1, b1;
     
-    while (c1 != 3)
+    for (int i = 0; i < 50; i++)
     {
-        cout << "******Management System***********" << endl << endl;
-        
-        cout << "Main Menu\n";
-        
-        cout <<"1-Hospital\n2-NADRA Pakistan\n3-EXIT" << endl;
-        
-        cin >> c1;
-        
-        if (c1 == 1)
+        if ((ccnic.compare(N[i].getCNIC()) == 0) && (through.compare(N[i].getpassword()) == 0))
         {
-            int b11;
-            
-            while (b11 != 2)
+            while (c1 != 3)
             {
-                cout <<"Welcome to the Database fo All Hospitals" << endl;
+                cout << "******Management System***********" << endl << endl;
                 
-                cout << "1- Discharge Papers\n2-Exit" << endl;
+                cout << "Main Menu\n";
                 
-                cin >> b11;
+                cout <<"1-Hospital\n2-NADRA Pakistan\n3-EXIT" << endl;
                 
-                cout << "1-Discharge Papers" << endl;
+                cin >> c1;
                 
-                if (b11 == 1)
+                if (c1 == 1)
                 {
-                    cout << "Enter the NUMBER of the child";
+                    int b11;
                     
-                    int b13;
-                    
-                    cin >> b13;
-                    
-                    H[b13].dischargeforbirth();
-                    
-                } 
-                
-            }
-
-        } else if(c1 == 2)
-        {
-            cout<< "*************NADRA Pakistan***************"<< endl<< endl;
-        
-            cout << "About Us:\nNational Database and Registration Authority (NADRA)\nwas established as National Database Organization (NDO),\nan attached department under the Ministry of Interior,\nGovernment of Pakistan in 1998." << endl;
-    
-            int b1;
-
-            while (b1 != 7)
-            {
-                cout << "\n\n\nPlease make your selection "<<endl;
-                
-                cout << "1 - For Complete Data Base "<<endl;
-                
-                cout << "2 - Search For yourself "<<endl;
-        
-                cout << "3 - Statistics For Legal Age "<<endl;
-                
-                cout << "4 - Registering a marriage "<<endl;
-
-                cout << "5 - Registering a divorce "<<endl;
-
-                cout << "6 - Changing any details "<<endl;
-
-                cout << "7 - EXIT"<<endl;
-                
-                cin >> b1;
-                
-                if (b1 == 1)
-                {
-                    cout << "Enter the password"<<endl;
-                    
-                    cin >> pass;
-
-                    if (pass.compare(password) == 0)
+                    while (b11 != 2)
                     {
-                        for (int i = 0; i < 50; i++)
+                        cout <<"Welcome to the Database fo All Hospitals" << endl;
+                        
+                        cout << "1- Discharge Papers\n2-Exit" << endl;
+                        
+                        cin >> b11;
+                        
+                        cout << "1-Discharge Papers" << endl;
+                        
+                        if (b11 == 1)
                         {
-                            N[i].personaldetails();
-
-                        }                        
-                    } else
-                    {
-                        cout<<"Authorised personel only allowed to access complete data base"<<endl;
-                    }
-
-                }else if(b1 == 2)
-                {
-                    cout << "Enter Citizen's CNIC Number for Complete Information"<<endl<<"CNIC: ";
-
-                    string b22;
-                    
-                    cin >> b22;
-            
-                    N[49].searchyourself(b22);
-            
-                } else if (b1 == 3)
-                {
-                    cout << "\n\n";
-            
-                    N[49].checkforeighteen();
-                    //C[nmarriages].nMarriages();
-
-                } else if (b1 == 4)
-                {
-                    cout << "Enter the groom's first name only "<<endl;
-
-                    cin >> male;
-
-                    cout << "Enter the groom's CNIC number "<<endl;
-
-                    cin >> cnicm;
-
-                    cout << "Enter the bride's first name only "<<endl;
-
-                    cin >> female;
-
-                    cout << "Enter the bride's CNIC number "<<endl;
-
-                    cin >> cnicf;
-
-                    int check = 0;
-
-                    for (int i = 0; i < 50; i++)
-                    {
-                        if (((cnicm.compare(N[i].getCNIC())) == 0) && ((male.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
-                        {
-                            N[i].setrelationshipstatus("Married");
-                            check++;                               
-                        }
-
-                        if (((cnicf.compare(N[i].getCNIC())) == 0) && ((female.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
-                        {
-                            N[i].setrelationshipstatus("Married");
-                            check++;
-                        }
+                            cout << "Enter the NUMBER of the child";
+                            
+                            int b13;
+                            
+                            cin >> b13;
+                            
+                            H[b13].dischargeforbirth();
+                            
+                        } 
                         
                     }
-                    if (check == 2)
-                    {
-                        C[nmarriages] = Court(male, female, cnicm, cnicf);
-                        
-                        check = 0;
 
-                        for (int i = 0; i < 50; i++)
+                } else if(c1 == 2)
+                {
+                    cout<< "*************NADRA Pakistan***************"<< endl<< endl;
+                
+                    cout << "About Us:\nNational Database and Registration Authority (NADRA)\nwas established as National Database Organization (NDO),\nan attached department under the Ministry of Interior,\nGovernment of Pakistan in 1998." << endl;
+            
+                    int b1;
+
+                    while (b1 != 7)
+                    {
+                        cout << "\n\n\nPlease make your selection "<<endl;
+                        
+                        cout << "1 - For Complete Data Base "<<endl;
+                        
+                        cout << "2 - Search For yourself "<<endl;
+                
+                        cout << "3 - Statistics For Legal Age "<<endl;
+                        
+                        cout << "4 - Registering a marriage "<<endl;
+
+                        cout << "5 - Registering a divorce "<<endl;
+
+                        cout << "6 - Changing any details "<<endl;
+
+                        cout << "7 - EXIT"<<endl;
+                        
+                        cin >> b1;
+                        
+                        if (b1 == 1)
                         {
-                            if (((cnicm.compare(N[i].getCNIC())) == 0) && ((male.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
+                            cout << "Enter the password"<<endl;
+                            
+                            cin >> pass;
+
+                            if (pass.compare(password) == 0)
                             {
-                                N[i].setmarriagepaper(C[nmarriages].getn_marriagepaper());
+                                for (int i = 0; i < 50; i++)
+                                {
+                                    N[i].personaldetails();
+
+                                }                        
+                            } else
+                            {
+                                cout<<"Authorised personel only allowed to access complete data base"<<endl;
                             }
 
-                            if (((cnicf.compare(N[i].getCNIC())) == 0) && ((female.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
+                        }else if(b1 == 2)
+                        {
+                            cout << "Enter Citizen's CNIC Number for Complete Information"<<endl<<"CNIC: ";
+
+                            string b22;
+                            
+                            cin >> b22;
+                    
+                            N[49].searchyourself(b22);
+                    
+                        } else if (b1 == 3)
+                        {
+                            cout << "\n\n";
+                    
+                            N[49].checkforeighteen();
+                            //C[nmarriages].nMarriages();
+
+                        } else if (b1 == 4)
+                        {
+                            cout << "Enter the groom's first name only "<<endl;
+
+                            cin >> male;
+
+                            cout << "Enter the groom's CNIC number "<<endl;
+
+                            cin >> cnicm;
+
+                            cout << "Enter the bride's first name only "<<endl;
+
+                            cin >> female;
+
+                            cout << "Enter the bride's CNIC number "<<endl;
+
+                            cin >> cnicf;
+
+                            int check = 0;
+
+                            for (int i = 0; i < 50; i++)
                             {
-                                N[i].setmarriagepaper(C[nmarriages].getn_marriagepaper());
+                                if (((cnicm.compare(N[i].getCNIC())) == 0) && ((male.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
+                                {
+                                    N[i].setrelationshipstatus("Married");
+                                    check++;                               
+                                }
+
+                                if (((cnicf.compare(N[i].getCNIC())) == 0) && ((female.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
+                                {
+                                    N[i].setrelationshipstatus("Married");
+                                    check++;
+                                }
+                                
+                            }
+                            if (check == 2)
+                            {
+                                C[nmarriages] = Court(male, female, cnicm, cnicf);
+                                
+                                check = 0;
+
+                                for (int i = 0; i < 50; i++)
+                                {
+                                    if (((cnicm.compare(N[i].getCNIC())) == 0) && ((male.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
+                                    {
+                                        N[i].setmarriagepaper(C[nmarriages].getn_marriagepaper());
+                                    }
+
+                                    if (((cnicf.compare(N[i].getCNIC())) == 0) && ((female.compare(N[i].getFirstname())) == 0) && ((N[i].getage()) >= 18))
+                                    {
+                                        N[i].setmarriagepaper(C[nmarriages].getn_marriagepaper());
+                                    }
+                                    
+                                }
+                                nmarriages++;
+                                cnicf.clear();
+                                cnicm.clear();
+
+                            } else
+                            {
+                                cout << "Not Qualified for marriage "<<endl;
+                            }
+                            
+                        } else if (b1 == 5)
+                        {
+                            int number;
+
+                            cout << "Enter your marriage registeration number "<<endl;
+
+                            cin >> number;
+
+                            cout << "Enter the husband's CNIC"<<endl;
+
+                            cin >> cnicm;
+
+                            cout << "Enter the wife's CNIC"<<endl;
+
+                            cin >> cnicf;
+
+                            C[nmarriages].setDivorce(number);
+                            
+                            for (int i = 0; i < 50; i++)
+                            {
+                                if ((cnicm.compare(N[i].getCNIC())) == 0)
+                                {
+                                    N[i].setrelationshipstatus("Divorced");
+                                    N[i].setmarriagepaper(0);
+                                }
+
+                                if ((cnicf.compare(N[i].getCNIC())) == 0)
+                                {
+                                    N[i].setrelationshipstatus("Divorced");
+                                    N[i].setmarriagepaper(0);
+                                }
+                            }
+                            
+                        } else if (b1 == 6)
+                        {
+                            cnicf.clear();
+
+                            cout << "Enter your CNIC "<<endl;
+
+                            cin >> cnicf;
+
+                            for (int i = 0; i < 50; i++)
+                            {
+                                if ((cnicf.compare(N[i].getCNIC())) == 0)
+                                {
+                                    int d0 = 0;
+
+                                    string b;
+
+                                    cout << "Which detail you want to correct " << "1 - First Name "<< endl << "2 - Last name " << "3 - Father's Name " << endl << "4 - Mother's Name" << endl<< "5 - Age" << endl << "6 - Citizenship status "<< endl << "7 - Employment Status " << endl << "8 - Religion" << endl << "9 - Exit" << endl;
+
+                                    cin >> d0;
+
+                                    while(d0 != 9)
+                                    {
+                                        if (d0 == 1)
+                                        {
+                                            cout << "Enter your first name's correction "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setfirstname(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                        } else if (d0 == 2)
+                                        {
+                                            cout << "Enter your last name's correction "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setlastname(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                        } else if (d0 == 3)
+                                        {
+                                            cout << "Enter your father's name's correction "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setfathername(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                        } else if (d0 == 4)
+                                        {
+                                            cout << "Enter your mother name's correction "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setmothername(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                        } else if (d0 == 5)
+                                        {
+                                            cout << "Enter your age correction "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setage(stoi(input));
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+
+                                        } else if (d0 == 6)
+                                        {
+                                            cout << "Enter your citizenship status "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setcitizenshipstatus(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                        } else if (d0 == 7)
+                                        {
+                                            cout << "Enter your employment status "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setemploymentstatus(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                        } else if (d0 == 8)
+                                        {
+                                            cout << "Enter your religion "<<endl;
+
+                                            cin >> input;
+
+                                            N[i].setreligion(input);
+
+                                            b = b + N[i].getfirstname();
+                                            b = b + " ";
+                                            b = b + N[i].getlastname();
+                                            b = b + " ";
+                                            b = b + N[i].getfathername();
+                                            b = b + " ";
+                                            b = b + N[i].getmothername();
+                                            b = b + " ";
+                                            b = b + to_string(N[i].getage());
+                                            b = b + " ";
+                                            b = b + N[i].getGender();
+                                            b = b + " ";
+                                            b = b + N[i].getcitizenshipstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getemploymentstatus();
+                                            b = b + " ";
+                                            b = b + N[i].getreligion();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofissue();
+                                            b = b + " ";
+                                            b = b + N[i].getdateofexpiry();
+
+                                            N[i].edit(b, cnicf);
+                                            
+                                            
+                                        }
+                                    }
+                                }
+                                
                             }
                             
                         }
-                        nmarriages++;
-                        cnicf.clear();
-                        cnicm.clear();
-
-                    } else
-                    {
-                        cout << "Not Qualified for marriage "<<endl;
-                    }
-                    
-                } else if (b1 == 5)
-                {
-                    int number;
-
-                    cout << "Enter your marriage registeration number "<<endl;
-
-                    cin >> number;
-
-                    cout << "Enter the husband's CNIC"<<endl;
-
-                    cin >> cnicm;
-
-                    cout << "Enter the wife's CNIC"<<endl;
-
-                    cin >> cnicf;
-
-                    C[nmarriages].setDivorce(number);
-                    
-                    for (int i = 0; i < 50; i++)
-                    {
-                        if ((cnicm.compare(N[i].getCNIC())) == 0)
-                        {
-                            N[i].setrelationshipstatus("Divorced");
-                            N[i].setmarriagepaper(0);
-                        }
-
-                        if ((cnicf.compare(N[i].getCNIC())) == 0)
-                        {
-                            N[i].setrelationshipstatus("Divorced");
-                            N[i].setmarriagepaper(0);
-                        }
-                    }
-                    
-                } else if (b1 == 6)
-                {
-                    cnicf.clear();
-
-                    cout << "Enter your CNIC "<<endl;
-
-                    cin >> cnicf;
-
-                    for (int i = 0; i < 50; i++)
-                    {
-                        if ((cnicf.compare(N[i].getCNIC())) == 0)
-                        {
-                            int d0 = 0;
-
-                            string b;
-
-                            cout << "Which detail you want to correct " << "1 - First Name "<< endl << "2 - Last name " << "3 - Father's Name " << endl << "4 - Mother's Name" << endl<< "5 - Age" << endl << "6 - Citizenship status "<< endl << "7 - Employment Status " << endl << "8 - Religion" << endl << "9 - Exit" << endl;
-
-                            cin >> d0;
-
-                            if (d0 == 1)
-                            {
-                                cout << "Enter your first name's correction "<<endl;
-
-                                cin >> input;
-
-                                N[i].setfirstname(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                            } else if (d0 == 2)
-                            {
-                                cout << "Enter your last name's correction "<<endl;
-
-                                cin >> input;
-
-                                N[i].setlastname(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                            } else if (d0 == 3)
-                            {
-                                cout << "Enter your father's name's correction "<<endl;
-
-                                cin >> input;
-
-                                N[i].setfathername(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                            } else if (d0 == 4)
-                            {
-                                cout << "Enter your mother name's correction "<<endl;
-
-                                cin >> input;
-
-                                N[i].setmothername(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                            } else if (d0 == 5)
-                            {
-                                cout << "Enter your age correction "<<endl;
-
-                                cin >> input;
-
-                                N[i].setage(stoi(input));
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-
-                            } else if (d0 == 6)
-                            {
-                                cout << "Enter your citizenship status "<<endl;
-
-                                cin >> input;
-
-                                N[i].setcitizenshipstatus(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                            } else if (d0 == 7)
-                            {
-                                cout << "Enter your employment status "<<endl;
-
-                                cin >> input;
-
-                                N[i].setemploymentstatus(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                            } else if (d0 == 8)
-                            {
-                                cout << "Enter your religion "<<endl;
-
-                                cin >> input;
-
-                                N[i].setreligion(input);
-
-                                b = b + N[i].getfirstname();
-                                b = b + " ";
-                                b = b + N[i].getlastname();
-                                b = b + " ";
-                                b = b + N[i].getfathername();
-                                b = b + " ";
-                                b = b + N[i].getmothername();
-                                b = b + " ";
-                                b = b + to_string(N[i].getage());
-                                b = b + " ";
-                                b = b + N[i].getGender();
-                                b = b + " ";
-                                b = b + N[i].getcitizenshipstatus();
-                                b = b + " ";
-                                b = b + N[i].getemploymentstatus();
-                                b = b + " ";
-                                b = b + N[i].getreligion();
-                                b = b + " ";
-                                b = b + N[i].getdateofissue();
-                                b = b + " ";
-                                b = b + N[i].getdateofexpiry();
-
-                                N[i].edit(b, cnicf);
-                                
-                                
-                            } else if (d0 == 9)
-                            {
-                                
-
-                            }
-                        }
+                        
                         
                     }
-                    
-                }
-                
-                
-            }
-        } 
+                } 
 
+            }
+        }
+        
     }
+    
+
     cout << "\n\nContact Us:\nNational Database & Registration Authority\n\nAddress:NADRA State Bank of Pakistan Building, Shahrah-i-Jamhuriat, G-5/2, Islamabad, 44000, Pakistan\n\nPhone:1777 (for subscribers of Mobilink,Ufone,Telenor and Zong)\n+92 51 111 786 100(for fixed lines and overseas applicants)\nWebsite:https://www.nadra.gov.pk"<< endl;
 
     cout << "Created By:\nMuhammad Huzaifa(22k-4641)\nAbdul Rafay (22k-4462)\nAli Jafar (22k-4301)[Team-Lead]"<< endl;
