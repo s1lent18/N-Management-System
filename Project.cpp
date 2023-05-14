@@ -1153,7 +1153,7 @@ class Nadra : public Court, public Hospital
 
          // a represents the choice given below, b represent the edit, c represents the cnic number
        
-        void edit(int a, string b, string c)
+        void edit(string b, string c)
         {
             fstream file("Project.txt", ios::in | ios::out);
 
@@ -1573,7 +1573,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(1, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                             } else if (d0 == 2)
                             {
@@ -1605,7 +1605,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(2, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                             } else if (d0 == 3)
                             {
@@ -1637,7 +1637,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(3, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                             } else if (d0 == 4)
                             {
@@ -1669,7 +1669,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(4, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                             } else if (d0 == 5)
                             {
@@ -1701,7 +1701,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(5, b, cnicf);
+                                N[i].edit(b, cnicf);
 
                             } else if (d0 == 6)
                             {
@@ -1733,7 +1733,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(6, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                             } else if (d0 == 7)
                             {
@@ -1765,7 +1765,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(1, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                             } else if (d0 == 8)
                             {
@@ -1797,7 +1797,7 @@ int main()
                                 b = b + " ";
                                 b = b + N[i].getdateofexpiry();
 
-                                N[i].edit(1, b, cnicf);
+                                N[i].edit(b, cnicf);
                                 
                                 
                             } else if (d0 == 9)
