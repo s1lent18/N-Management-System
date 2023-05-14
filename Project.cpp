@@ -149,7 +149,7 @@ class Court
             this->namefemale = namefemale;
             this->CNIC_male = CNIC_male;
             this->CNIC_female = CNIC_female;
-
+            setn_marriagepaper();
         }
 
         void setn_marriagepaper()
@@ -844,7 +844,7 @@ class Nadra : public Court, public Hospital
             filing();
         }
 
-        void searchyouself(string cnic)
+        void searchyourself(string cnic)
         {
             int count = 0;
 
@@ -1225,7 +1225,7 @@ int main()
     N[38]=Nadra(H[38]);
     H[39]=Hospital("Dinesh", "Kartik", "Virat", "Anushka", "Hinduism", "t", "r", "Mumbai", "Male", "public");
     N[39]=Nadra(H[39]);
-    H[40]=Hospital("Hamza", "Saif", "Khurram", "Zara", "Islam", "t", "r", "bahawalpur", "Male", "private");
+    H[40]=Hospital("Hamza", "Saif", "Khurram", "Zara", "Islam", "t", "r", "Bahawalpur", "Male", "private");
     N[40]=Nadra(H[40]);
     H[41]=Hospital("Namrah", "Nizai", "Pervaiz", "Namira", "Islam", "t", "r", "Karachi", "Female", "private");
     N[41]=Nadra(H[41]);
@@ -1259,7 +1259,7 @@ int main()
 
     cin>>a;
 
-    N[49].searchyouself(a);
+    N[49].searchyourself(a);
 
 }
  
