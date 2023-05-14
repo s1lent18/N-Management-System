@@ -1112,31 +1112,6 @@ int Nadra :: overeighteen = 0;
 
 int main()
 {
-    int choice1 = 0, choice2 = 0, choice3 = 0;
-
-    cout<<"Enter 1 For Court\nEnter 2 For Hospital\nEnter 3 For Nadra"<<endl;
-
-    cin>>choice1;
-
-    if (choice1 == 1)
-    {
-        cout<<"Enter 1 for registering a marriage\nEnter 2 for registering a divorce"<<endl;
-
-        cin>>choice2;
-
-    }else if (choice1 == 2)
-    {
-        cout<<"Enter 1 for Birth\nEnter 2 for Death"<<endl;
-
-        cin>>choice2;
-
-    }else if (choice1 == 3)
-    {
-        cout<<"Enter 1 for B-form\nEnter 2 for CNIC\nEnter 3 for death certificate\nEnter 4 for others"<<endl;
-
-        cin>>choice2;
-    }
-
     //if(cnic.compare(N[i].getCNIC()) == 0)
     //{
 
@@ -1250,16 +1225,69 @@ int main()
     {
         N[i].filing();
     }
+    string c1;
     
-    N[49].checkforeighteen();
+    while (c1!="3"){
+	cout << "******Management System***********" << endl << endl;
+    cout << "Main Menu\n";
+    cout <<"1-Hospital\n2-NADRA Pakistan\n3-EXIT" << endl;
+    cin >> c1;
+    if (c1=="1"){
+    		string b11;
+    	
+    	
+    	while (b11!="2"){
+    		cout <<"Welcome to the Database fo All Hospitals" << endl;
+    		cout << "1- Discharge Papers\n2-Exit" << endl;
+    		cin >> b11;
+    		cout << "1-Discharge Papers" << endl;
+			if (b11=="1"){
+				cout << "Enter the NUMBER of the child";
+				int b13;
+				cin >> b13;
+				H[b13].dischargeforbirth();
+				
+			} 
+    		
+		}
+	}
+    else if(c1=="2"){
+    cout<< "*************NADRA Pakistan***************"<< endl<< endl;
+    
+    cout << "About Us:\nNational Database and Registration Authority (NADRA)\nwas established as National Database Organization (NDO),\nan attached department under the Ministry of Interior,\nGovernment of Pakistan in 1998." << endl;
+ 
+     string b1 ;
+    while (b1!="4"){
+	cout << "\n\n\nPlease make your selection\n";
+    cout << "1 - For Personal Details\n";
+    cout << "2 - Search For yourself\n";
+    cout << "3 - Statistics For Legal Age\n4 - EXIT";
+	cin >> b1;
+	if (b1=="1"){
+	for (int i=0; i<50; i++){
+		N[i].personaldetails();
+		
+		
+	}
+}
+	else if(b1=="2"){
+		cout << "Enter Citizen's CNIC Number for Complete Information\nCNIC:";
+		string b22;
+		cin >> b22;
+		int i;
+		N[i].searchyourself(b22);
+	}
+	else if (b1=="3"){
+		cout << "\n\n" ;
+			N[49].checkforeighteen();
 
-    N[49].readfile();
+	}
 
-    string a;
+}
+cout << "\n\nContact Us:\nNational Database & Registration Authority\n\nAddress:NADRA State Bank of Pakistan Building, Shahrah-i-Jamhuriat, G-5/2, Islamabad, 44000, Pakistan\n\nPhone:1777 (for subscribers of Mobilink,Ufone,Telenor and Zong)\n+92 51 111 786 100(for fixed lines and overseas applicants)\nWebsite:https://www.nadra.gov.pk"<< endl;
+}
 
-    cin>>a;
-
-    N[49].searchyourself(a);
-
+}
+cout << "Created By:\nMuhammad Huzaifa(22k-4641)\nAbdul Rafay (22k-4462)\nAli Jafar (22k-4301)"<< endl;
 }
  
