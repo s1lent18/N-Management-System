@@ -278,14 +278,10 @@ class Hospital
 
             if (statusofhospital.compare("Private") == 0)
             {
-                cout << "HI";
-
                 privatecount++;
 
             } else if (statusofhospital.compare("Public") == 0)
             {
-                cout << "BI";
-
                 publiccount++;
             }
         }
@@ -398,6 +394,12 @@ class Hospital
         string getdeathtime()
         {
             return deathtime;
+        }
+
+        void death()
+        {
+            setdeathdate();
+            setdeathtime();
         }
 
 };
@@ -1198,6 +1200,137 @@ class Nadra : public Court, public Hospital
             
         }
 
+        void setdeathdate()
+        {
+            deathdate = exactdate();
+        }
+
+        string getdeathdate()
+        {
+            return deathdate;
+        }
+
+        void setdeathtime()
+        {
+            deathtime = deathtime + exacttime()[0];
+
+            deathtime = deathtime + exacttime()[1];
+
+            deathtime = deathtime + ":";
+
+            deathtime = deathtime + exacttime()[2];
+
+            deathtime = deathtime + exacttime()[3];
+
+            deathtime = deathtime + ":";
+
+            deathtime = deathtime + exacttime()[4];
+
+            deathtime = deathtime + exacttime()[5];
+        }
+
+        string getdeathtime()
+        {
+            return deathtime;
+        }
+
+        void registerdeath(string cnic)
+        {
+            if (getCNIC().compare(cnic) == 0)
+            {
+                setdeathdate();
+                setdeathtime();
+                
+                population--;
+
+                if (getage() >= 18)
+                {
+                    overeighteen--;
+
+                } else
+                {
+                    undereighteen--;
+                }
+                
+
+
+                char a[100];
+
+                fstream FILE("Project1.txt", ios::app);
+
+                strcpy(a, getCNIC().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getfirstname().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getlastname().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getfathername().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getmothername().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, to_string(getage()).c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getGender().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getcitizenshipstatus().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getreligion().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getdeathdate().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                strcpy(a, getdeathtime().c_str());
+
+                FILE << a << " ";
+
+                a[0] = 0;
+
+                FILE << endl;
+
+                FILE.close();                
+            }
+            
+            
+        }
 };
 
 int Nadra :: population = 0;
@@ -1470,7 +1603,9 @@ int main()
 
                                 cout << "5 - Changing any details "<<endl;
 
-                                cout << "6 - EXIT"<<endl;
+                                cout << "6 - Register Death "<<endl;
+
+                                cout << "7 - EXIT"<<endl;
                                     
                                 cin >> b1;
                                 
@@ -1885,9 +2020,27 @@ int main()
                                         
                                     }
                                     
-                                }
+                                } else if (b1 == 6)
+                                {
+                                    cnicm.clear();
 
-                            } while (b1 != 6);
+                                    cout << "Enter CNIC of the deceased "<< endl;
+
+                                    cin >> cnicm;
+
+                                    for (int i = 0; i < 50; i++)
+                                    {
+                                        if (cnicm.compare(N[i].getCNIC()) == 0)
+                                        {
+                                            N[cat].registerdeath(cnicm);
+                                        }
+                                        
+                                    }
+                                    
+                                }
+                                
+
+                            } while (b1 != 7);
                             
                         }
 
