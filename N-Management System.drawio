@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-15T18:14:42.716Z" agent="Mozilla/5.0 (Linux; Android 13; CPH2159) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Mobile Safari/537.36" etag="YO-aGc3nGAPn_3_vLnLH" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-15T18:16:11.573Z" agent="Mozilla/5.0 (Linux; Android 13; CPH2159) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Mobile Safari/537.36" etag="LQFi2o_1ATuFhIoyw4R3" version="21.3.2" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="393" dy="781" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+    <mxGraphModel dx="421" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -28,7 +28,7 @@
             <mxRectangle x="160" y="40" width="70" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="76ZYkbSYI2YksYncArjY-59" value="&lt;div&gt;- namemale:string&lt;/div&gt;&lt;div&gt;- namefemale:string&lt;/div&gt;&lt;div&gt;- CNIC_male:string&lt;/div&gt;&lt;div&gt;- CNIC_female:string&lt;br&gt;&lt;/div&gt;&lt;div&gt;- n_marriagepaper:int&lt;/div&gt;&lt;div&gt;- Marriagecount:int&lt;/div&gt;&lt;div&gt;- Divorcecount:int&lt;/div&gt;&lt;div&gt;-marriagepaper[100]:int&lt;/div&gt;&lt;div&gt;-check:int&lt;/div&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;style class=&quot;native-dark-class-modified&quot; type=&quot;text/css&quot;&gt;p { line-height: 115%; margin-bottom: 0.1in; background: transparent }&lt;/style&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-58" vertex="1">
+        <mxCell id="76ZYkbSYI2YksYncArjY-59" value="&lt;div&gt;- namemale:string&lt;/div&gt;&lt;div&gt;- namefemale:string&lt;/div&gt;&lt;div&gt;- CNIC_male:string&lt;/div&gt;&lt;div&gt;- CNIC_female:string&lt;br&gt;&lt;/div&gt;&lt;div&gt;- n_marriagepaper:int&lt;/div&gt;&lt;div&gt;- Marriagecount:int&lt;/div&gt;&lt;div&gt;- Divorcecount:int&lt;/div&gt;&lt;div&gt;-marriagepaper[100]:int&lt;/div&gt;&lt;p style=&quot;line-height: 100%; margin-bottom: 0in&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;style class=&quot;native-dark-class-modified&quot; type=&quot;text/css&quot;&gt;p { line-height: 115%; margin-bottom: 0.1in; background: transparent }&lt;/style&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="76ZYkbSYI2YksYncArjY-58" vertex="1">
           <mxGeometry y="26" width="360" height="134" as="geometry" />
         </mxCell>
         <mxCell id="76ZYkbSYI2YksYncArjY-60" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="76ZYkbSYI2YksYncArjY-58" vertex="1">
